@@ -24,8 +24,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.15" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="NovaPasta\" />
-  </ItemGroup>
-
 </Project>
