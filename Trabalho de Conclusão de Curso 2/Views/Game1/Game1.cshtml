@@ -1,7 +1,12 @@
-﻿@{
+﻿@model Trabalho_de_Conclusão_de_Curso_2.Models.Game1Model
+@using Newtonsoft.Json
+@{
     ViewData["Title"] = "Privacy Policy";
-
+    string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
+    string olhos = JsonConvert.SerializeObject(Model.olhos);
+    string bocas = JsonConvert.SerializeObject(Model.bocas);
 }
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0," />
@@ -13,21 +18,33 @@
 
 <body>
 
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="~/js/Game1/Game1.js"></script>
 
     <div class="game-board" id="game-board">
-        <img src="~/Content/IArley.png" class="IArley" alt="Alternate Text" />
+        <img src="~/Content/Game1/IArley/IArley.png" class="IArley" alt="Alternate Text" />
+
+        <div id="divSobrancelha">
+            <img src="~/Content/Game1/IArley/sobrancelha neutra.png" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />
+        </div>
+
         <div id="divOlhos">
-            <img src="~/Content/olho neutro.png" class="Olhos" id="Olhos" alt="Alternate Text" />
+            <img src="~/Content/Game1/IArley/olhos neutro.png" class="Olhos" id="Olhos" alt="Alternate Text" />
         </div>
 
         <div>
-            <button onclick="sayHello()" style="position: absolute; top: 238px; left: 700px;">Click me</button>
+            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarSobrancelha(@sobrancelhas)" style="position: absolute; top: 170px; left: 700px;" title="Mudar Sobrancelha" />
         </div>
 
+        <div>
+            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarOlhos(@olhos)" style="position: absolute; top: 238px; left: 700px;" title="Mudar Olhos" />
+        </div>
+
+        <div>
+            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarBoca(@bocas)" style="position: absolute; top: 385px; left: 700px;" title="Mudar Boca" />
+        </div>
         <div id="divBoca">
-            <img src="~/Content/boca neutra.png" class="Boca" id="Boca" alt="Alternate Text" />
+            <img src="~/Content/Game1/IArley/boca neutra.png" class="Boca" id="Boca" alt="Alternate Text" />
         </div>
     </div>
-
 </body>

@@ -1,4 +1,7 @@
 ﻿{
+  "ConnectionStrings": {
+    "SqlServerConnection": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=IAprendeer;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"
+  },
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -16,6 +19,7 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
+
     "Trabalho_de_Conclusão_de_Curso_2": {
       "commandName": "Project",
       "dotnetRunMessages": "true",

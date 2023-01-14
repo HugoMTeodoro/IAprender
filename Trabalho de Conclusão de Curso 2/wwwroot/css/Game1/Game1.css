@@ -26,10 +26,17 @@
     margin-right:40px;
 
 }
+.Sobrancelha {
+    margin-bottom: 150px;
+    margin-left: -40px;
+}
 #divOlhos {
     position: absolute;
 }
-.divBoca {
+#divBoca {
+    position: absolute;
+}
+#divBoca {
     position: absolute;
 }
 .Boca {
