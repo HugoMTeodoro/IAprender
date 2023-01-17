@@ -23,6 +23,7 @@ namespace Trabalho_de_Conclusão_de_Curso_2.BBL
             model.sobrancelhas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="sobrancelha").ToList();
             model.olhos = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="olhos").ToList();
             model.bocas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="boca").ToList();
+            model.training = _context.Trainings.ToList();
             return model;
         }
 

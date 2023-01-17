@@ -11,5 +11,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
         public List<Image> sobrancelhas { get; set; }
         public List<Image> olhos { get; set; }
         public List<Image> bocas { get; set; }
+        public List<IArleyTraining> training { get; set; }
     }
 }

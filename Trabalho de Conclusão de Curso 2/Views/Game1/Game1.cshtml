@@ -5,6 +5,7 @@
     string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
+
 }
 
 <head>
@@ -20,31 +21,136 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="~/js/Game1/Game1.js"></script>
+    <div class="flex-box container-box">
+        <div class="content-box">
+            <div class="boneco">
+                <div class="game-board" id="game-board">
 
-    <div class="game-board" id="game-board">
-        <img src="~/Content/Game1/IArley/IArley.png" class="IArley" alt="Alternate Text" />
+                    <img src="~/Content/Game1/IArley/IArley.png" class="IArley" alt="Alternate Text" />
 
-        <div id="divSobrancelha">
-            <img src="~/Content/Game1/IArley/sobrancelha neutra.png" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />
-        </div>
+                    <div id="divSobrancelha">
+                        <img src="~/Content/Game1/IArley/sobrancelha neutra.png" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />
+                    </div>
 
-        <div id="divOlhos">
-            <img src="~/Content/Game1/IArley/olhos neutro.png" class="Olhos" id="Olhos" alt="Alternate Text" />
-        </div>
+                    <div id="divOlhos">
+                        <img src="~/Content/Game1/IArley/olhos neutro.png" class="Olhos" id="Olhos" alt="Alternate Text" />
+                    </div>
 
-        <div>
-            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarSobrancelha(@sobrancelhas)" style="position: absolute; top: 170px; left: 700px;" title="Mudar Sobrancelha" />
-        </div>
+                    <div>
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarSobrancelha(@sobrancelhas)" style="position: absolute; top: 170px; left: 550px;" title="Mudar Sobrancelha" />
+                    </div>
 
-        <div>
-            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarOlhos(@olhos)" style="position: absolute; top: 238px; left: 700px;" title="Mudar Olhos" />
-        </div>
+                    <div>
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarOlhos(@olhos)" style="position: absolute; top: 238px; left: 550px;" title="Mudar Olhos" />
+                    </div>
 
-        <div>
-            <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarBoca(@bocas)" style="position: absolute; top: 385px; left: 700px;" title="Mudar Boca" />
-        </div>
-        <div id="divBoca">
-            <img src="~/Content/Game1/IArley/boca neutra.png" class="Boca" id="Boca" alt="Alternate Text" />
+                    <div>
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarBoca(@bocas)" style="position: absolute; top: 385px; left: 550px;" title="Mudar Boca" />
+                    </div>
+                    <div id="divBoca">
+                        <img src="~/Content/Game1/IArley/boca neutra.png" class="Boca" id="Boca" alt="Alternate Text" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="future">
+                <h2>Content</h2>
+            </div>
         </div>
     </div>
-</body>
+    <div class="flex-box RedeETabela">
+        <div class="Rede">
+            <div class="flex-box container-box">
+                <div class="imagem">
+                    <div class="sobrancelhaEntry">
+                        000
+                    </div>
+                    <div class="olhosEntry">
+                        000
+                    </div>
+
+                    <div class="bocaEntry">
+                        000
+                    </div>
+                    <div class="peso1Azul">
+                        000
+                    </div>
+                    <div class="peso2Azul">
+                        000
+                    </div>
+                    <div class="peso3Azul">
+                        000
+                    </div>
+                    <div class="peso1Vermelho">
+                        000
+                    </div>
+                    <div class="peso2Vermelho">
+                        000
+                    </div>
+                    <div class="peso3Vermelho">
+                        000
+                    </div>
+                    <div class="peso1Verde">
+                        000
+                    </div>
+                    <div class="peso2Verde">
+                        000
+                    </div>
+                    <div class="peso3Verde">
+                        000
+                    </div>
+                    <div class="peso1Preto">
+                        000
+                    </div>
+                    <div class="peso2Preto">
+                        000
+                    </div>
+                    <div class="peso3Preto">
+                        000
+                    </div>
+                    <div class="somaAtivacaoN1">
+                        Soma=
+                        <br>
+                        Ativação=
+                    </div>
+                    <div class="somaAtivacaoN2">
+                        Soma=
+                        <br>
+                        Ativação=
+                    </div>
+                    <div class="somaAtivacaoN3">
+                        Soma=
+                        <br>
+                        Ativação=
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="table treinamento">
+        <table border="1">
+            <h2>Treinamento</h2>
+            <tr>
+                <td>Sobrancelhas</td>
+                <td>Olhos</td>
+                <td>Boca</td>
+                <td>Humor</td>
+                @foreach (Trabalho_de_Conclusão_de_Curso_2.Entities.Game1.IArleyTraining t in Model.training)
+                {
+                <tr>
+                    <td>@t.Sobrancelha</td>
+                    <td>@t.Olhos</td>
+                    <td>@t.Boca</td>
+                    <td>@t.Humor</td>
+                </tr>
+            }
+
+            </table>
+
+        </div>
+        </div>
+
+    </body>

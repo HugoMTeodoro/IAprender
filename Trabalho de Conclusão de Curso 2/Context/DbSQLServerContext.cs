@@ -15,5 +15,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Context
             
         }
         public DbSet<Image> Images { get; set; }
+        public DbSet<IArleyTraining> Trainings { get; set; }
     }
 }

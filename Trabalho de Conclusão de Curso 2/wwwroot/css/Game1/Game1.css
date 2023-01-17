@@ -5,8 +5,8 @@
 }
 
 .game-board {
-    width: 80%;
-    height: 500px;
+    width: 550px;
+    height: 100%;
     border: 1px solid #333;
     margin: auto;
     position: relative;
@@ -17,6 +17,10 @@
 
 .IArley {
     position: absolute;
+    
+}
+.boneco {
+    height: 550px;
     
 }
 .Olhos {
@@ -42,4 +46,157 @@
 .Boca {
     margin-top:300px;
     margin-left:-40px;
+}
+
+.flex-box {
+    display: flex;
+}
+.RedeETabela {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container-box {
+}
+
+.content-box {
+    display: flex;
+    justify-content: space-between;
+    width:100%
+}
+
+.imagem {
+    position:relative;
+    width:1200px;
+    height:1200px;
+    background: url('../../Content/Game1/Rede/Rede Neural.png');
+    background-repeat:no-repeat;
+}
+
+.sobrancelhaEntry {
+    left:107px;
+    top:200px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.olhosEntry {
+    left: 107px;
+    top: 494px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.bocaEntry {
+    left: 107px;
+    top: 784px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso1Azul {
+    left: 300px;
+    top: 135px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso2Azul {
+    left: 250px;
+    top: 245px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso3Azul {
+    left: 180px;
+    top: 300px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso1Vermelho {
+    left: 470px;
+    top: 135px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso2Vermelho {
+    left: 250px;
+    top: 500px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso3Vermelho {
+    left: 150px;
+    top: 590px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso1Verde {
+    left: 600px;
+    top: 135px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso2Verde {
+    left: 580px;
+    top: 580px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso3Verde {
+    left: 400px;
+    top: 880px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso1Preto {
+    left: 800px;
+    top: 135px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso2Preto {
+    left: 800px;
+    top: 480px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.peso3Preto {
+    left: 800px;
+    top: 730px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.somaAtivacaoN1 {
+    left: 560px;
+    top: 40px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.somaAtivacaoN2 {
+    left: 560px;
+    top: 480px;
+    position: absolute;
+    color: black;
+    text-align: center;
+}
+.somaAtivacaoN3 {
+    left: 560px;
+    top: 900px;
+    position: absolute;
+    color: black;
+    text-align: center;
 }
