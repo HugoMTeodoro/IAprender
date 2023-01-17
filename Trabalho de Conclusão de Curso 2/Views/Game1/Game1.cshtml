@@ -5,7 +5,15 @@
     string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
-
+    double peso1Azul = 0.5;
+    double peso2Azul = 0.5;
+    double peso3Azul = 0.5;
+    double peso1Vermelho = -0.5;
+    double peso2Vermelho = -0.5;
+    double peso3Vermelho = -0.5;
+    double peso1Verde = 0.5;
+    double peso2Verde = 0.5;
+    double peso3Verde = 0.5;
 }
 
 <head>
@@ -73,31 +81,31 @@
                         000
                     </div>
                     <div class="peso1Azul">
-                        000
+                        @peso1Azul
                     </div>
                     <div class="peso2Azul">
-                        000
+                        @peso2Azul
                     </div>
                     <div class="peso3Azul">
-                        000
+                        @peso3Azul
                     </div>
                     <div class="peso1Vermelho">
-                        000
+                        @peso1Vermelho
                     </div>
                     <div class="peso2Vermelho">
-                        000
+                        @peso2Vermelho
                     </div>
                     <div class="peso3Vermelho">
-                        000
+                        @peso3Vermelho
                     </div>
                     <div class="peso1Verde">
-                        000
+                        @peso1Verde
                     </div>
                     <div class="peso2Verde">
-                        000
+                        @peso2Verde
                     </div>
                     <div class="peso3Verde">
-                        000
+                        @peso3Verde
                     </div>
                     <div class="peso1Preto">
                         000
@@ -150,7 +158,6 @@
 
             </table>
 
-        </div>
         </div>
 
     </body>
