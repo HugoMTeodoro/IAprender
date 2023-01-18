@@ -1,10 +1,12 @@
 ﻿@model Trabalho_de_Conclusão_de_Curso_2.Models.Game1Model
+@using Trabalho_de_Conclusão_de_Curso_2.Entities.Game1
 @using Newtonsoft.Json
 @{
     ViewData["Title"] = "Privacy Policy";
     string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
+
     double peso1Azul = 0.5;
     double peso2Azul = 0.5;
     double peso3Azul = 0.5;
@@ -14,6 +16,7 @@
     double peso1Verde = 0.5;
     double peso2Verde = 0.5;
     double peso3Verde = 0.5;
+    List<SomaAtivacaoModel> somaAtivacoes = new List<SomaAtivacaoModel>();
 }
 
 <head>
@@ -83,25 +86,25 @@
                     <div class="peso1Azul">
                         @peso1Azul
                     </div>
-                    <div class="peso2Azul">
+                    <div class="peso1Vermelho">
                         @peso2Azul
                     </div>
-                    <div class="peso3Azul">
+                    <div class="peso1Verde">
                         @peso3Azul
                     </div>
-                    <div class="peso1Vermelho">
+                    <div class="peso2Azul">
                         @peso1Vermelho
                     </div>
                     <div class="peso2Vermelho">
                         @peso2Vermelho
                     </div>
-                    <div class="peso3Vermelho">
+                    <div class="peso2Verde">
                         @peso3Vermelho
                     </div>
-                    <div class="peso1Verde">
+                    <div class="peso3Azul">
                         @peso1Verde
                     </div>
-                    <div class="peso2Verde">
+                    <div class="peso3Vermelho">
                         @peso2Verde
                     </div>
                     <div class="peso3Verde">
@@ -146,7 +149,7 @@
                 <td>Olhos</td>
                 <td>Boca</td>
                 <td>Humor</td>
-                @foreach (Trabalho_de_Conclusão_de_Curso_2.Entities.Game1.IArleyTraining t in Model.training)
+                @foreach (IArleyTraining t in Model.training)
                 {
                 <tr>
                     <td>@t.Sobrancelha</td>
@@ -161,3 +164,26 @@
         </div>
 
     </body>
+@for (int i = 0; i < Model.training.Count; i++)
+{
+    SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
+    IArleyTraining t = Model.training[i];
+    double somaAzul = (t.Sobrancelha * peso1Azul) + (t.Olhos * peso2Azul) + (t.Boca * peso3Azul);
+    double sigmoideAzul = 1 / (1 + (Math.Pow(2.77,-somaAzul)));
+    Result result = new Result { soma = somaAzul, cor = "Azul", ativacao=sigmoideAzul };
+    model.somasEAtivacoes.Add(result);
+
+
+    double somaVermelho = (t.Sobrancelha * peso1Vermelho) + (t.Olhos * peso2Vermelho) + (t.Boca * peso3Vermelho);
+    double sigmoideVermelho = 1 / (1 + (Math.Pow(2.77, -somaVermelho)));
+    result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = sigmoideVermelho };
+    model.somasEAtivacoes.Add(result);
+
+
+
+    double somaVerde = (t.Sobrancelha * peso1Verde) + (t.Olhos * peso2Verde) + (t.Boca * peso3Verde);
+    double sigmoideVerde = 1 / (1 + (Math.Pow(2.77, -somaVerde)));
+    result = new Result { soma = somaVerde, cor = "Verde", ativacao = sigmoideVerde };
+    model.somasEAtivacoes.Add(result);
+
+}
