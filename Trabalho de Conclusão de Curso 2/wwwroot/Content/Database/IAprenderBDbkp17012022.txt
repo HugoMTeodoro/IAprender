@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [IAprendeer]    Script Date: 17/01/2023 02:15:32 ******/
+/****** Object:  Database [IAprendeer]    Script Date: 22/01/2023 00:39:35 ******/
 CREATE DATABASE [IAprendeer]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -87,7 +87,7 @@ ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
 GO
 USE [IAprendeer]
 GO
-/****** Object:  Table [dbo].[IArleyTraining]    Script Date: 17/01/2023 02:15:32 ******/
+/****** Object:  Table [dbo].[IArleyTraining]    Script Date: 22/01/2023 00:39:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,13 +98,14 @@ CREATE TABLE [dbo].[IArleyTraining](
 	[Olhos] [int] NULL,
 	[Boca] [int] NULL,
 	[Humor] [varchar](255) NULL,
+	[HumorId] [float] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Images]    Script Date: 17/01/2023 02:15:32 ******/
+/****** Object:  Table [dbo].[Images]    Script Date: 22/01/2023 00:39:36 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,133 +125,133 @@ CREATE TABLE [dbo].[Images](
 GO
 SET IDENTITY_INSERT [dbo].[IArleyTraining] ON 
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (1, 100, 100, 100, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (1, 0, 0, 0, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (2, 100, 100, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (2, 0, 0, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (3, 100, 100, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (3, 0, 0, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (4, 100, 100, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (4, 0, 0, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (5, 100, 200, 100, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (5, 0, 1, 0, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (6, 100, 200, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (6, 0, 1, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (7, 100, 200, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (7, 0, 1, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (8, 100, 200, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (8, 0, 1, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (9, 100, 300, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (9, 0, -2, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (10, 100, 300, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (10, 0, -2, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (11, 100, 300, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (11, 0, -2, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (12, 100, 300, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (12, 0, -2, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (13, 100, 400, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (13, 0, 4, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (14, 100, 400, 200, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (14, 0, 4, 1, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (15, 100, 400, 300, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (15, 0, 4, -2, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (16, 100, 400, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (16, 0, 4, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (17, 200, 100, 100, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (17, 1, 0, 0, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (18, 200, 100, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (18, 1, 0, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (19, 200, 100, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (19, 1, 0, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (20, 200, 100, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (20, 1, 0, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (21, 200, 200, 100, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (21, 1, 1, 0, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (22, 200, 200, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (22, 1, 1, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (23, 200, 200, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (23, 1, 1, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (24, 200, 200, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (24, 1, 1, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (25, 200, 300, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (25, 1, -2, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (26, 200, 300, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (26, 1, -2, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (27, 200, 300, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (27, 1, -2, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (28, 200, 300, 400, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (28, 1, -2, 4, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (29, 200, 400, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (29, 1, 4, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (30, 200, 400, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (30, 1, 4, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (31, 200, 400, 300, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (31, 1, 4, -2, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (32, 200, 400, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (32, 1, 4, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (33, 300, 100, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (33, -2, 0, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (34, 300, 100, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (34, -2, 0, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (35, 300, 100, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (35, -2, 0, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (36, 300, 100, 400, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (36, -2, 0, 4, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (37, 300, 200, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (37, -2, 1, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (38, 300, 200, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (38, -2, 1, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (39, 300, 200, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (39, -2, 1, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (40, 300, 200, 400, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (40, -2, 1, 4, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (41, 300, 300, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (41, -2, -2, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (42, 300, 300, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (42, -2, -2, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (43, 300, 300, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (43, -2, -2, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (44, 300, 300, 400, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (44, -2, -2, 4, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (45, 300, 400, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (45, -2, 4, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (46, 300, 400, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (46, -2, 4, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (47, 300, 400, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (47, -2, 4, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (48, 300, 400, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (48, -2, 4, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (49, 400, 100, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (49, 4, 0, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (50, 400, 100, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (50, 4, 0, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (51, 400, 100, 300, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (51, 4, 0, -2, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (52, 400, 100, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (52, 4, 0, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (53, 400, 200, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (53, 4, 1, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (54, 400, 200, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (54, 4, 1, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (55, 400, 200, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (55, 4, 1, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (56, 400, 200, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (56, 4, 1, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (57, 400, 300, 100, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (57, 4, -2, 0, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (58, 400, 300, 200, N'Feliz')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (58, 4, -2, 1, N'Feliz', 0.5)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (59, 400, 300, 300, N'Triste')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (59, 4, -2, -2, N'Triste', 0)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (60, 400, 300, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (60, 4, -2, 4, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (61, 400, 400, 100, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (61, 4, 4, 0, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (62, 400, 400, 200, N'Neutro')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (62, 4, 4, 1, N'Neutro', 0.25)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (63, 400, 400, 300, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (63, 4, 4, -2, N'Raiva', 1)
 GO
-INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor]) VALUES (64, 400, 400, 400, N'Raiva')
+INSERT [dbo].[IArleyTraining] ([Id], [Sobrancelha], [Olhos], [Boca], [Humor], [HumorId]) VALUES (64, 4, 4, 4, N'Raiva', 1)
 GO
 SET IDENTITY_INSERT [dbo].[IArleyTraining] OFF
 GO
