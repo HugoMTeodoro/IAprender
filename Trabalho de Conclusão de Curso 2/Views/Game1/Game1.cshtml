@@ -10,13 +10,29 @@
     double peso1Azul = 0.5;
     double peso2Azul = 0.5;
     double peso3Azul = 0.5;
-    double peso1Vermelho = -0.5;
-    double peso2Vermelho = -0.5;
-    double peso3Vermelho = -0.5;
+    double peso1Vermelho = 0.5;
+    double peso2Vermelho = 0.5;
+    double peso3Vermelho = 0.5;
     double peso1Verde = 0.5;
     double peso2Verde = 0.5;
     double peso3Verde = 0.5;
+    double peso1Preto = 0.5;
+    double peso2Preto = 0.5;
+    double peso3Preto = 0.5;
+
+    double erromedioSoma = 0;
+    double erroMedio = 0;
+
+ 
+
+
     List<SomaAtivacaoModel> somaAtivacoes = new List<SomaAtivacaoModel>();
+    List<SomaAtivacaoModel> somaAtivacoesSaida = new List<SomaAtivacaoModel>();
+    List<ErroMedioModel> erroMedioClasse = new List<ErroMedioModel>();
+    List<DerivadaModel> derivadasSaida = new List<DerivadaModel>();
+    List<DerivadaModel> deltaSaida = new List<DerivadaModel>();
+    List<DerivadaModel> deltaEscondida = new List<DerivadaModel>();
+
 }
 
 <head>
@@ -145,13 +161,16 @@
         <table border="1">
             <h2>Treinamento</h2>
             <tr>
+                <td>Id</td>
                 <td>Sobrancelhas</td>
                 <td>Olhos</td>
                 <td>Boca</td>
                 <td>Humor</td>
+
                 @foreach (IArleyTraining t in Model.training)
                 {
                 <tr>
+                    <td>@t.Id</td>
                     <td>@t.Sobrancelha</td>
                     <td>@t.Olhos</td>
                     <td>@t.Boca</td>
@@ -164,26 +183,137 @@
         </div>
 
     </body>
-@for (int i = 0; i < Model.training.Count; i++)
-{
-    SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
-    IArleyTraining t = Model.training[i];
-    double somaAzul = (t.Sobrancelha * peso1Azul) + (t.Olhos * peso2Azul) + (t.Boca * peso3Azul);
-    double sigmoideAzul = 1 / (1 + (Math.Pow(2.77,-somaAzul)));
-    Result result = new Result { soma = somaAzul, cor = "Azul", ativacao=sigmoideAzul };
-    model.somasEAtivacoes.Add(result);
+    @for (int i = 0; i < Model.training.Count; i++)
+    {
+        SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
+        IArleyTraining t = Model.training[i];
+        double somaAzul = (t.Sobrancelha * peso1Azul) + (t.Olhos * peso2Azul) + (t.Boca * peso3Azul);
+        double sigmoideAzul = 1 / (1 + (Math.Pow(2.77, -somaAzul)));
+        Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = sigmoideAzul };
+        model.somasEAtivacoes.Add(result);
 
 
-    double somaVermelho = (t.Sobrancelha * peso1Vermelho) + (t.Olhos * peso2Vermelho) + (t.Boca * peso3Vermelho);
-    double sigmoideVermelho = 1 / (1 + (Math.Pow(2.77, -somaVermelho)));
-    result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = sigmoideVermelho };
-    model.somasEAtivacoes.Add(result);
+        double somaVermelho = (t.Sobrancelha * peso1Vermelho) + (t.Olhos * peso2Vermelho) + (t.Boca * peso3Vermelho);
+        double sigmoideVermelho = 1 / (1 + (Math.Pow(2.77, -somaVermelho)));
+        result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = sigmoideVermelho };
+        model.somasEAtivacoes.Add(result);
 
 
 
-    double somaVerde = (t.Sobrancelha * peso1Verde) + (t.Olhos * peso2Verde) + (t.Boca * peso3Verde);
-    double sigmoideVerde = 1 / (1 + (Math.Pow(2.77, -somaVerde)));
-    result = new Result { soma = somaVerde, cor = "Verde", ativacao = sigmoideVerde };
-    model.somasEAtivacoes.Add(result);
+        double somaVerde = (t.Sobrancelha * peso1Verde) + (t.Olhos * peso2Verde) + (t.Boca * peso3Verde);
+        double sigmoideVerde = 1 / (1 + (Math.Pow(2.77, -somaVerde)));
+        result = new Result { soma = somaVerde, cor = "Verde", ativacao = sigmoideVerde };
+        model.somasEAtivacoes.Add(result);
+        somaAtivacoes.Add(model);
 
-}
+    }
+
+    @for (int i = 0; i < Model.training.Count; i++)
+    {
+        SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
+        List<SomaAtivacaoModel> t = somaAtivacoes.Where(x=> x.IndexList==i).ToList();
+        double somaPreto = 0;
+        foreach (SomaAtivacaoModel sam in t)
+        {
+
+            somaPreto = (sam.somasEAtivacoes[0].ativacao * peso1Preto) + (sam.somasEAtivacoes[1].ativacao * peso2Preto) + (sam.somasEAtivacoes[2].ativacao * peso3Preto);
+            double sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
+            Result result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto };
+            model.somasEAtivacoes.Add(result);
+        }
+        somaAtivacoesSaida.Add(model);
+    }
+    <div class="table treinamento">
+        <table border="1">
+            <h2>Treinamento</h2>
+            <tr>
+                <td>Id</td>
+                <td>Ativacao</td>
+                <td>Soma</td>
+                <td>Cor</td>
+            </tr>
+            @foreach (SomaAtivacaoModel t in somaAtivacoes)
+            {
+
+                @foreach (Result sa in t.somasEAtivacoes)
+                {
+                    <tr>
+                        <td>@t.IndexList</td>
+                        <td>@sa.ativacao</td>
+                        <td>@sa.soma</td>
+                        <td>@sa.cor</td>
+                    </tr>
+                }
+
+
+            }
+
+        </table>
+
+    </div>
+    <div class="table treinamento">
+        <table border="1">
+            <h2>Somas e ativacoes</h2>
+            <tr>
+                <td>Id</td>
+                <td>Ativacao</td>
+                <td>Soma</td>
+                <td>Cor</td>
+            </tr>
+            @foreach (SomaAtivacaoModel t in somaAtivacoesSaida)
+            {
+
+                @foreach (Result sa in t.somasEAtivacoes)
+                {
+                    <tr>
+                        <td>@t.IndexList</td>
+                        <td>@sa.ativacao</td>
+                        <td>@sa.soma</td>
+                        <td>@sa.cor</td>
+                    </tr>
+
+
+
+                }
+
+
+            }
+
+        </table>
+
+        @for (int i = 0; i < somaAtivacoesSaida.Count; i++)
+        {
+            @foreach (Result sa in somaAtivacoesSaida[i].somasEAtivacoes)
+            {
+                ErroMedioModel erro = new ErroMedioModel();
+                erro.Id = i;
+                double err = Model.training[i].HumorId - sa.ativacao;
+                erro.erro = err;
+                double derivadaFuncao = sa.ativacao*(1- sa.ativacao);
+                double deltaFuncao = err * derivadaFuncao;
+                DerivadaModel derivada = new DerivadaModel { Derivada=derivadaFuncao,Index=i};
+                derivadasSaida.Add(derivada);
+                DeltaModel delta = new DeltaModel { Index = i, Delta = deltaFuncao };
+                erromedioSoma += Math.Abs(err);
+                erroMedioClasse.Add(erro);
+            }
+            }
+        @{ 
+            erroMedio = erromedioSoma / somaAtivacoesSaida.Count;
+
+        }
+
+        @for (int i = 0; i < somaAtivacoes.Count; i++)
+        {
+            SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
+            List<SomaAtivacaoModel> t = somaAtivacoes.Where(x => x.IndexList == i).ToList();
+            foreach (SomaAtivacaoModel sa in t)
+            {
+                
+            }
+        }
+
+    <h2>Erro medio: @erroMedio</h2>
+
+
+    </div>
