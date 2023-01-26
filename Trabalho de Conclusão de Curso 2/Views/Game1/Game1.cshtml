@@ -314,7 +314,12 @@
             }
 
         </table>
-
+        @functions {
+            public void Epoca()
+            {
+                
+            }
+        }
         @for (int i = 0; i < somaAtivacoesSaida.Count; i++)
         {
             @foreach (Result sa in somaAtivacoesSaida[i].somasEAtivacoes)
@@ -352,7 +357,7 @@
                     PesoModel peso = pesos.Where(x => x.Cor == "Preto" && x.Index == j + 1).FirstOrDefault();
                     DeltaModel deltSaida = deltaSaida.Where(x => x.Index == sa.IndexList).FirstOrDefault();
                     double deltEscondida = derivadaEscondida * peso.Peso * deltSaida.Delta;
-                    DeltaModel deltaEscond = new DeltaModel { Cor = sa.somasEAtivacoes[j].cor, Delta = deltEscondida, Index = j };
+                    DeltaModel deltaEscond = new DeltaModel { Cor = sa.somasEAtivacoes[j].cor, Delta = deltEscondida, Index = i };
                     deltaEscondida.Add(deltaEscond);
                 }
 
@@ -363,15 +368,15 @@
         {
             SomaAtivacaoModel t = somaAtivacoes.Where(x => x.IndexList == i && x.somasEAtivacoes.Any(x => x.cor == "Azul")).FirstOrDefault();
             DeltaModel deltSaida = deltaSaida.Where(x => x.Index == t.IndexList).FirstOrDefault();
-            entrVsDeltaAzul += t.somasEAtivacoes[i].ativacao * deltSaida.Delta;
+            entrVsDeltaAzul += t.somasEAtivacoes[0].ativacao * deltSaida.Delta;
 
             t = somaAtivacoes.Where(x => x.IndexList == i && x.somasEAtivacoes.Any(x => x.cor == "Vermelho")).FirstOrDefault();
             deltSaida = deltaSaida.Where(x => x.Index == t.IndexList).FirstOrDefault();
-            entrVsDeltaVermelho += t.somasEAtivacoes[i].ativacao * deltSaida.Delta;
+            entrVsDeltaVermelho += t.somasEAtivacoes[1].ativacao * deltSaida.Delta;
 
             t = somaAtivacoes.Where(x => x.IndexList == i && x.somasEAtivacoes.Any(x => x.cor == "Verde")).FirstOrDefault();
             deltSaida = deltaSaida.Where(x => x.Index == t.IndexList).FirstOrDefault();
-            entrVsDeltaVerde += t.somasEAtivacoes[i].ativacao * deltSaida.Delta;
+            entrVsDeltaVerde += t.somasEAtivacoes[2].ativacao * deltSaida.Delta;
 
         }
 
@@ -410,10 +415,12 @@
             peso1Vermelho.Peso = (peso1Vermelho.Peso * Momento) + (entrVsDeltaEscondidaVermelhoSobrancelha * txAprendizagem);
             peso2Vermelho.Peso = (peso2Vermelho.Peso * Momento) + (entrVsDeltaEscondidaVermelhoOlhos * txAprendizagem);
             peso3Vermelho.Peso = (peso3Vermelho.Peso * Momento) + (entrVsDeltaEscondidaVermelhoBoca * txAprendizagem);
-            
+
             peso1Verde.Peso = (peso1Verde.Peso * Momento) + (entrVsDeltaEscondidaVerdeSobrancelha * txAprendizagem);
             peso2Verde.Peso = (peso2Verde.Peso * Momento) + (entrVsDeltaEscondidaVerdeOlhos * txAprendizagem);
             peso3Verde.Peso = (peso3Verde.Peso * Momento) + (entrVsDeltaEscondidaVerdeBoca * txAprendizagem);
         }
+
+        <h2>Resultados apos primeira epoca : Peso 1 Azul : @peso1Azul.Peso <br>@peso2Azul.Peso <br>@peso3Azul.Peso <br>@peso1Vermelho.Peso <br>@peso2Vermelho.Peso <br>@peso3Vermelho.Peso <br>@peso1Verde.Peso <br>@peso2Verde.Peso <br>@peso3Verde.Peso <br>@peso1Preto.Peso <br>@peso2Preto.Peso <br> @peso3Preto.Peso <br> </h2>
 
     </div>
