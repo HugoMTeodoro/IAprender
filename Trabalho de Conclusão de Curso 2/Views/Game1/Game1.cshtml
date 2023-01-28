@@ -8,6 +8,7 @@
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
 
+
     PesoModel peso1Azul = new PesoModel { Cor = "Azul", Peso = 0.5, Index = 1 };
     PesoModel peso2Azul = new PesoModel { Cor = "Azul", Peso = 0.5, Index = 2 };
     PesoModel peso3Azul = new PesoModel { Cor = "Azul", Peso = 0.5, Index = 3 };
@@ -78,6 +79,7 @@
     double entrVsDeltaEscondidaVerdeOlhos = 0;
     double entrVsDeltaEscondidaVerdeBoca = 0;
 
+    double euller = 2.71828;
 
     double txAprendizagem = 0.1;
     double Momento = 1;
@@ -262,21 +264,21 @@
         SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
         IArleyTraining t = Model.training[i];
         double somaAzul = (t.Sobrancelha * modelo.pesos[0].Peso) + (t.Olhos * modelo.pesos[1].Peso) + (t.Boca * modelo.pesos[2].Peso);
-        double sigmoideAzul = 1 / (1 + (Math.Pow(2.77, -somaAzul)));
-        Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = sigmoideAzul };
+        double softmaxAzul = 1 / (1 + (Math.Pow(euller, -somaAzul)));
+        Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = softmaxAzul };
         model.somasEAtivacoes.Add(result);
 
 
         double somaVermelho = (t.Sobrancelha * modelo.pesos[3].Peso) + (t.Olhos * modelo.pesos[4].Peso) + (t.Boca * modelo.pesos[5].Peso);
-        double sigmoideVermelho = 1 / (1 + (Math.Pow(2.77, -somaVermelho)));
-        result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = sigmoideVermelho };
+        double softmaxVermelho = 1 / (1 + (Math.Pow(euller, -somaVermelho)));
+        result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = softmaxVermelho };
         model.somasEAtivacoes.Add(result);
 
 
 
         double somaVerde = (t.Sobrancelha * modelo.pesos[6].Peso) + (t.Olhos * modelo.pesos[7].Peso) + (t.Boca * modelo.pesos[8].Peso);
-        double sigmoideVerde = 1 / (1 + (Math.Pow(2.77, -somaVerde)));
-        result = new Result { soma = somaVerde, cor = "Verde", ativacao = sigmoideVerde };
+        double softmaxVerde = 1 / (1 + (Math.Pow(euller, -somaVerde)));
+        result = new Result { soma = somaVerde, cor = "Verde", ativacao = softmaxVerde };
         model.somasEAtivacoes.Add(result);
         somaAtivacoes.Add(model);
 
@@ -292,8 +294,8 @@
         {
 
             somaPreto = (sam.somasEAtivacoes[0].ativacao * peso11Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso21Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso31Preto.Peso);
-            double sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
-            Result result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto };
+            double softmaxPreto = 1 / (1 + (Math.Pow(euller, -somaPreto)));
+            Result result = new Result { soma = somaPreto, cor = "Preto", ativacao = softmaxPreto };
             model.somasEAtivacoes.Add(result);
         }
         somaAtivacoesSaida.Add(model);
@@ -381,7 +383,7 @@
 
                 double txAprendizagem = 0.1;
                 double Momento = 1;
-
+                double euller = 2.71828;
 
 
 
@@ -399,23 +401,27 @@
                 {
                     SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
                     IArleyTraining t = Model.training[i];
+
                     double somaAzul = (t.Sobrancelha * peso1Azul.Peso) + (t.Olhos * peso2Azul.Peso) + (t.Boca * peso3Azul.Peso);
-                    double sigmoideAzul = 1 / (1 + (Math.Pow(2.77, -somaAzul)));
-                    Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = sigmoideAzul };
-                    model.somasEAtivacoes.Add(result);
-
-
-                    double somaVermelho = (t.Sobrancelha * peso1Vermelho.Peso) + (t.Olhos * peso2Vermelho.Peso) + (t.Boca * peso3Vermelho.Peso);
-                    double sigmoideVermelho = 1 / (1 + (Math.Pow(2.77, -somaVermelho)));
-                    result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = sigmoideVermelho };
-                    model.somasEAtivacoes.Add(result);
-
-
-
+                    double somaVermelho = (t.Sobrancelha * peso1Vermelho.Peso) + (t.Olhos * peso2Vermelho.Peso) + (t.Boca * peso3Vermelho.Peso);                  
                     double somaVerde = (t.Sobrancelha * peso1Verde.Peso) + (t.Olhos * peso2Verde.Peso) + (t.Boca * peso3Verde.Peso);
-                    double sigmoideVerde = 1 / (1 + (Math.Pow(2.77, -somaVerde)));
-                    result = new Result { soma = somaVerde, cor = "Verde", ativacao = sigmoideVerde };
+                    
+                    
+                    double softmaxAzul = Math.Pow(euller, somaAzul) / ((Math.Pow(euller, somaAzul)+Math.Pow(euller, somaVermelho)+Math.Pow(euller, somaVerde)));
+                    Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = softmaxAzul };
                     model.somasEAtivacoes.Add(result);
+
+                    double softmaxVermelho = Math.Pow(euller, somaVermelho) / ((Math.Pow(euller, somaAzul)+Math.Pow(euller, somaVermelho)+Math.Pow(euller, somaVerde)));
+                    result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = softmaxVermelho };
+                    model.somasEAtivacoes.Add(result);
+
+                    double softmaxVerde = Math.Pow(euller, somaVerde) / ((Math.Pow(euller, somaAzul)+Math.Pow(euller, somaVermelho)+Math.Pow(euller, somaVerde)));
+                    result = new Result { soma = somaVerde, cor = "Verde", ativacao = softmaxVerde };
+                    model.somasEAtivacoes.Add(result);
+
+
+
+
                     somaAtivacoes.Add(model);
 
                 }
@@ -424,30 +430,34 @@
                 {
                     SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
                     List<SomaAtivacaoModel> t = somaAtivacoes.Where(x => x.IndexList == i).ToList();
-                    double somaPreto = 0;
+                    double somaPreto1 = 0;
+                    double somaPreto2 = 0;
+                    double somaPreto3 = 0;
+                    double somaPreto4 = 0;
+
                     foreach (SomaAtivacaoModel sam in t)
                     {
 
-                        somaPreto = (sam.somasEAtivacoes[0].ativacao * peso11Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso21Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso31Preto.Peso);
-                        double sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
-                        Result result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto, IdSaida=1 };
-                        model.somasEAtivacoes.Add(result);
-
-                        somaPreto = (sam.somasEAtivacoes[0].ativacao * peso12Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso22Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso32Preto.Peso);
-                        sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
-                        result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto,IdSaida=2 };
-                        model.somasEAtivacoes.Add(result);
-                        
-                        somaPreto = (sam.somasEAtivacoes[0].ativacao * peso13Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso23Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso33Preto.Peso);
-                        sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
-                        result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto,IdSaida=3 };
+                        somaPreto1 = (sam.somasEAtivacoes[0].ativacao * peso11Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso21Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso31Preto.Peso);
+                        somaPreto2 = (sam.somasEAtivacoes[0].ativacao * peso12Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso22Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso32Preto.Peso);
+                        somaPreto3 = (sam.somasEAtivacoes[0].ativacao * peso13Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso23Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso33Preto.Peso);
+                        somaPreto4 = (sam.somasEAtivacoes[0].ativacao * peso14Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso24Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso34Preto.Peso);
+                     
+                        double softmaxPreto = Math.Pow(euller, somaPreto1) / (Math.Pow(euller, somaPreto1)+Math.Pow(euller, somaPreto2)+Math.Pow(euller, somaPreto3)+Math.Pow(euller, somaPreto4));
+                        Result result = new Result { soma = somaPreto1, cor = "Preto", ativacao = softmaxPreto, IdSaida=1 };
                         model.somasEAtivacoes.Add(result);
                         
-                        somaPreto = (sam.somasEAtivacoes[0].ativacao * peso14Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso24Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso34Preto.Peso);
-                        sigmoidePreto = 1 / (1 + (Math.Pow(2.77, -somaPreto)));
-                        result = new Result { soma = somaPreto, cor = "Preto", ativacao = sigmoidePreto,IdSaida=4 };
+                        softmaxPreto = Math.Pow(euller, somaPreto2) / (Math.Pow(euller, somaPreto1)+Math.Pow(euller, somaPreto2)+Math.Pow(euller, somaPreto3)+Math.Pow(euller, somaPreto4));
+                        result = new Result { soma = somaPreto2, cor = "Preto", ativacao = softmaxPreto, IdSaida=1 };
                         model.somasEAtivacoes.Add(result);
-
+                        
+                        softmaxPreto = Math.Pow(euller, somaPreto3) / (Math.Pow(euller, somaPreto1)+Math.Pow(euller, somaPreto2)+Math.Pow(euller, somaPreto3)+Math.Pow(euller, somaPreto4));
+                        result = new Result { soma = somaPreto3, cor = "Preto", ativacao = softmaxPreto, IdSaida=1 };
+                        model.somasEAtivacoes.Add(result);
+                        
+                        softmaxPreto = Math.Pow(euller, somaPreto4) / (Math.Pow(euller, somaPreto1)+Math.Pow(euller, somaPreto2)+Math.Pow(euller, somaPreto3)+Math.Pow(euller, somaPreto4));
+                        result = new Result { soma = somaPreto4, cor = "Preto", ativacao = softmaxPreto, IdSaida=1 };
+                        model.somasEAtivacoes.Add(result);
 
                     }
                     somaAtivacoesSaida.Add(model);
