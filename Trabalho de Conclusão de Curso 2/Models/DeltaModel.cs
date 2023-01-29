@@ -10,5 +10,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
         public int Index { get; set; }
         public double Delta { get; set; }
         public string Cor { get; set; }
+        public int IdSaida { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
     {
         public int Index { get; set; }
         public double Derivada { get; set; }
+        public int IdSaida { get; set; }
     }
 }

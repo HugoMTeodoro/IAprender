@@ -9,5 +9,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
     {
         public int Id { get; set; }
         public double erro { get; set; }
+        public int IdSaida { get; set; }
     }
 }
