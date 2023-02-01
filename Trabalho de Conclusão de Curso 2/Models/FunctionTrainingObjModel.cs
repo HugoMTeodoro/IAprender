@@ -9,7 +9,7 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
     {
 
         public List<PesoModel> pesos { get; set; }
-        public double erroMedio { get; set; }
+        public List<double> erroMedio { get; set; }
         /* public List<PesoModel> pesos { get; set; }
          public List<SomaAtivacaoModel> somaAtivacoes { get; set; }
          public List<SomaAtivacaoModel> somaAtivacoesSaida { get; set; }

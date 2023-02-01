@@ -10,5 +10,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
         public string Cor { get; set; }
         public double Peso { get; set; }
         public int Index { get; set; }
+        public int IndexSaida { get; set; }
     }
 }
