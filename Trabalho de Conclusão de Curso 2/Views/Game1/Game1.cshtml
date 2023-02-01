@@ -23,17 +23,17 @@
     PesoModel peso21Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2 };
     PesoModel peso31Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3 };
 
-    PesoModel peso12Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida=1 };
-    PesoModel peso22Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida=1};
-    PesoModel peso32Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida=1 };
+    PesoModel peso12Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida = 1 };
+    PesoModel peso22Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida = 1 };
+    PesoModel peso32Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida = 1 };
 
-    PesoModel peso13Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida=2 };
-    PesoModel peso23Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida=2 };
-    PesoModel peso33Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida=2 };
+    PesoModel peso13Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida = 2 };
+    PesoModel peso23Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida = 2 };
+    PesoModel peso33Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida = 2 };
 
-    PesoModel peso14Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida=3 };
-    PesoModel peso24Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida=3  };
-    PesoModel peso34Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida=3  };
+    PesoModel peso14Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 1, IndexSaida = 3 };
+    PesoModel peso24Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 2, IndexSaida = 3 };
+    PesoModel peso34Preto = new PesoModel { Cor = "Preto", Peso = 0.5, Index = 3, IndexSaida = 3 };
 
     List<PesoModel> pesos = new List<PesoModel>();
     pesos.Add(peso1Azul);
@@ -253,12 +253,16 @@
 @{
     FunctionTrainingObjModel modelo = new FunctionTrainingObjModel { pesos = pesos, erroMedio = new List<double>() };
     // FunctionTrainingObjModel modelo = new FunctionTrainingObjModel {pesos=pesos,deltaEscondida=deltaEscondida,deltaSaida=deltaSaida,derivadasNeuronios=derivadasNeuronios,derivadasSaida=derivadasSaida,entrVsDeltaAzul=entrVsDeltaAzul,entrVsDeltaEscondidaAzulBoca=entrVsDeltaEscondidaAzulBoca,entrVsDeltaEscondidaAzulOlhos=entrVsDeltaEscondidaAzulOlhos,entrVsDeltaEscondidaAzulSobrancelha=entrVsDeltaEscondidaAzulSobrancelha,entrVsDeltaEscondidaVerdeBoca=entrVsDeltaEscondidaVerdeBoca,entrVsDeltaEscondidaVerdeOlhos=entrVsDeltaEscondidaVerdeOlhos,entrVsDeltaEscondidaVerdeSobrancelha=entrVsDeltaEscondidaVerdeSobrancelha,entrVsDeltaEscondidaVermelhoBoca=entrVsDeltaEscondidaVermelhoBoca,entrVsDeltaEscondidaVermelhoOlhos=entrVsDeltaEscondidaVermelhoOlhos,entrVsDeltaEscondidaVermelhoSobrancelha=entrVsDeltaEscondidaVermelhoSobrancelha,entrVsDeltaVerde=entrVsDeltaVerde,entrVsDeltaVermelho=entrVsDeltaVermelho,erroMedioClasse=erroMedioClasse,erromedioSoma=erromedioSoma,Momento=Momento,somaAtivacoes=somaAtivacoes,somaAtivacoesSaida=somaAtivacoesSaida,txAprendizagem=txAprendizagem };
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        //modelo = Epoca(modelo.pesos);
+        modelo = Epoca(modelo.pesos);
+    }
+    @foreach (double err in modelo.erroMedio)
+    {
+        <h2>err </h2>
+        <br>
     }
 
-    <h2>Erro medio: @modelo.erroMedio </h2>
 
     @for (int i = 0; i < Model.training.Count; i++)
     {
@@ -374,10 +378,6 @@
                 double erroMedio3 = 0;
                 double erroMedio4 = 0;
 
-                double entrVsDeltaAzul = 0;
-                double entrVsDeltaVermelho = 0;
-                double entrVsDeltaVerde = 0;
-
                 double entrVsDeltaEscondidaAzulSobrancelha = 0;
                 double entrVsDeltaEscondidaAzulOlhos = 0;
                 double entrVsDeltaEscondidaAzulBoca = 0;
@@ -389,8 +389,8 @@
                 double entrVsDeltaEscondidaVerdeBoca = 0;
 
 
-                double txAprendizagem = 0.1;
-                double Momento = 1;
+                double txAprendizagem = 0.01;
+                double Momento = 0.1;
                 double euller = 2.71828;
 
 
@@ -494,23 +494,24 @@
                             erro.Id = i;
                             erro.IdSaida = j;
                             double err = 0;
-                            switch(j){
+                            switch (j)
+                            {
                                 case 1:
-                                err = Model.training[i].Triste - sa.ativacao;
-                                erromedioSoma1 += Math.Abs(err);
-                                break;
+                                    err = Model.training[i].Triste - sa.ativacao;
+                                    erromedioSoma1 += Math.Abs(err);
+                                    break;
                                 case 2:
-                                err = Model.training[i].Neutro - sa.ativacao;
-                                erromedioSoma2 += Math.Abs(err);
-                                break;
+                                    err = Model.training[i].Neutro - sa.ativacao;
+                                    erromedioSoma2 += Math.Abs(err);
+                                    break;
                                 case 3:
-                                err = Model.training[i].Feliz - sa.ativacao;
-                                erromedioSoma3 += Math.Abs(err);
-                                break;
+                                    err = Model.training[i].Feliz - sa.ativacao;
+                                    erromedioSoma3 += Math.Abs(err);
+                                    break;
                                 case 4:
-                                err = Model.training[i].Raiva - sa.ativacao;
-                                erromedioSoma4 += Math.Abs(err);
-                                break;
+                                    err = Model.training[i].Raiva - sa.ativacao;
+                                    erromedioSoma4 += Math.Abs(err);
+                                    break;
                             }
                             erro.erro = err;
                             double derivadaFuncao = sa.ativacao * (1 - sa.ativacao);
@@ -536,7 +537,7 @@
                                 double ativ = sa.somasEAtivacoes[j].ativacao;
                                 double derivadaEscondida = ativ * (1 - ativ);
                                 derivadasNeuronios.Add(new DerivadaModel { Derivada = derivadaEscondida, Index = i });
-                                PesoModel peso = pesos.Where(x => x.Cor == "Preto" && x.Index == j + 1 && x.IndexSaida==k).FirstOrDefault();
+                                PesoModel peso = pesos.Where(x => x.Cor == "Preto" && x.Index == j + 1 && x.IndexSaida == k).FirstOrDefault();
                                 DeltaModel deltSaida = deltaSaida.Where(x => x.Index == sa.IndexList && x.IdSaida == k).FirstOrDefault();
                                 double deltEscondida = derivadaEscondida * peso.Peso * deltSaida.Delta;
                                 DeltaModel deltaEscond = new DeltaModel { Cor = sa.somasEAtivacoes[j].cor, Delta = deltEscondida, Index = i, IdSaida = k };
@@ -548,23 +549,23 @@
                     }
                 }
 
-                List<double> listEntrVsDeltaAzul = new List<double> {0, 0, 0, 0};
-                List<double> listEntrVsDeltaVermelho = new List<double> {0, 0, 0, 0};
-                List<double> listEntrVsDeltaVerde = new List<double> {0, 0, 0, 0};
+                List<double> listEntrVsDeltaAzul = new List<double> { 0, 0, 0, 0 };
+                List<double> listEntrVsDeltaVermelho = new List<double> { 0, 0, 0, 0 };
+                List<double> listEntrVsDeltaVerde = new List<double> { 0, 0, 0, 0 };
 
                 @for (int i = 0; i < somaAtivacoesSigmoide.Count; i++)
                 {
                     for (int k = 1; k <= 4; k++)
                     {
                         SomaAtivacaoModel t = somaAtivacoesSigmoide.Where(x => x.IndexList == i).FirstOrDefault();
-                        DeltaModel deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida==k).FirstOrDefault();
-                        listEntrVsDeltaAzul[k-1]+=t.somasEAtivacoes[0].ativacao * deltSaida.Delta;
+                        DeltaModel deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida == k).FirstOrDefault();
+                        listEntrVsDeltaAzul[k - 1] += t.somasEAtivacoes[0].ativacao * deltSaida.Delta;
 
-                        deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida==k ).FirstOrDefault();
-                        listEntrVsDeltaVermelho[k-1]+=t.somasEAtivacoes[1].ativacao * deltSaida.Delta;
+                        deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida == k).FirstOrDefault();
+                        listEntrVsDeltaVermelho[k - 1] += t.somasEAtivacoes[1].ativacao * deltSaida.Delta;
 
-                        deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida==k ).FirstOrDefault();
-                        listEntrVsDeltaVerde[k-1]+=t.somasEAtivacoes[2].ativacao * deltSaida.Delta;
+                        deltSaida = deltaSaida.Where(x => x.Index == t.IndexList && x.IdSaida == k).FirstOrDefault();
+                        listEntrVsDeltaVerde[k - 1] += t.somasEAtivacoes[2].ativacao * deltSaida.Delta;
                     }
 
 
@@ -573,43 +574,43 @@
 
                 pesos[9].Peso = (peso11Preto.Peso * Momento) + (listEntrVsDeltaAzul[0] * txAprendizagem);
                 pesos[10].Peso = (peso21Preto.Peso * Momento) + (listEntrVsDeltaVermelho[0] * txAprendizagem);
-                pesos[11].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[0]  * txAprendizagem);
-                
+                pesos[11].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[0] * txAprendizagem);
+
                 pesos[12].Peso = (peso11Preto.Peso * Momento) + (listEntrVsDeltaAzul[1] * txAprendizagem);
                 pesos[13].Peso = (peso21Preto.Peso * Momento) + (listEntrVsDeltaVermelho[1] * txAprendizagem);
-                pesos[14].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[1]  * txAprendizagem);
-                
+                pesos[14].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[1] * txAprendizagem);
+
                 pesos[15].Peso = (peso11Preto.Peso * Momento) + (listEntrVsDeltaAzul[2] * txAprendizagem);
                 pesos[16].Peso = (peso21Preto.Peso * Momento) + (listEntrVsDeltaVermelho[2] * txAprendizagem);
-                pesos[17].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[2]  * txAprendizagem);
-                
+                pesos[17].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[2] * txAprendizagem);
+
                 pesos[18].Peso = (peso11Preto.Peso * Momento) + (listEntrVsDeltaAzul[3] * txAprendizagem);
                 pesos[19].Peso = (peso21Preto.Peso * Momento) + (listEntrVsDeltaVermelho[3] * txAprendizagem);
-                pesos[20].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[3]  * txAprendizagem);
+                pesos[20].Peso = (peso31Preto.Peso * Momento) + (listEntrVsDeltaVerde[3] * txAprendizagem);
 
 
 
                 @for (int i = 0; i < Model.training.Count; i++)
                 {
-                   for (int k = 0; k <= 4; k++)
-                   {
-                       IArleyTraining t = Model.training[i];
-                    DeltaModel deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Azul" && x.IdSaida==k).FirstOrDefault();
-                    entrVsDeltaEscondidaAzulSobrancelha += t.Sobrancelha * deltEscondido.Delta;
-                    entrVsDeltaEscondidaAzulOlhos += t.Olhos * deltEscondido.Delta;
-                    entrVsDeltaEscondidaAzulBoca += t.Boca * deltEscondido.Delta;
+                    for (int k = 0; k <= 4; k++)
+                    {
+                        IArleyTraining t = Model.training[i];
+                        DeltaModel deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Azul" && x.IdSaida == k).FirstOrDefault();
+                        entrVsDeltaEscondidaAzulSobrancelha += t.Sobrancelha * deltEscondido.Delta;
+                        entrVsDeltaEscondidaAzulOlhos += t.Olhos * deltEscondido.Delta;
+                        entrVsDeltaEscondidaAzulBoca += t.Boca * deltEscondido.Delta;
 
-                    deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Vermelho" && x.IdSaida==k).FirstOrDefault();
-                    entrVsDeltaEscondidaVermelhoSobrancelha += t.Sobrancelha * deltEscondido.Delta;
-                    entrVsDeltaEscondidaVermelhoOlhos += t.Olhos * deltEscondido.Delta;
-                    entrVsDeltaEscondidaVermelhoBoca += t.Boca * deltEscondido.Delta;
+                        deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Vermelho" && x.IdSaida == k).FirstOrDefault();
+                        entrVsDeltaEscondidaVermelhoSobrancelha += t.Sobrancelha * deltEscondido.Delta;
+                        entrVsDeltaEscondidaVermelhoOlhos += t.Olhos * deltEscondido.Delta;
+                        entrVsDeltaEscondidaVermelhoBoca += t.Boca * deltEscondido.Delta;
 
-                    deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Verde" && x.IdSaida==k).FirstOrDefault();
-                    entrVsDeltaEscondidaVerdeSobrancelha += t.Sobrancelha * deltEscondido.Delta;
-                    entrVsDeltaEscondidaVerdeOlhos += t.Olhos * deltEscondido.Delta;
-                    entrVsDeltaEscondidaVerdeBoca += t.Boca * deltEscondido.Delta;
-                   }
-                    
+                        deltEscondido = deltaEscondida.Where(x => x.Index == i && x.Cor == "Verde" && x.IdSaida == k).FirstOrDefault();
+                        entrVsDeltaEscondidaVerdeSobrancelha += t.Sobrancelha * deltEscondido.Delta;
+                        entrVsDeltaEscondidaVerdeOlhos += t.Olhos * deltEscondido.Delta;
+                        entrVsDeltaEscondidaVerdeBoca += t.Boca * deltEscondido.Delta;
+                    }
+
 
 
                 }
