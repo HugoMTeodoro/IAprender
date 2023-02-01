@@ -627,10 +627,10 @@
                 pesos[7].Peso = (peso2Verde.Peso * Momento) + (entrVsDeltaEscondidaVerdeOlhos * txAprendizagem);
                 pesos[8].Peso = (peso3Verde.Peso * Momento) + (entrVsDeltaEscondidaVerdeBoca * txAprendizagem);
 
-                erroMedio1 = erromedioSoma1 / somaAtivacoesSaida.Count;
-                erroMedio2 = erromedioSoma2 / somaAtivacoesSaida.Count;
-                erroMedio3 = erromedioSoma3 / somaAtivacoesSaida.Count;
-                erroMedio4 = erromedioSoma4 / somaAtivacoesSaida.Count;
+                erroMedio1 = erromedioSoma1 / Model.training.Count;
+                erroMedio2 = erromedioSoma2 / Model.training.Count;
+                erroMedio3 = erromedioSoma3 / Model.training.Count;
+                erroMedio4 = erromedioSoma4 / Model.training.Count;
                 List<double> erros = new List<double> { erroMedio1, erroMedio2, erroMedio3, erroMedio4 };
 
                 return new FunctionTrainingObjModel { pesos = pesos, erroMedio = erros };
