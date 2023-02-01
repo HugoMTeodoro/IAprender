@@ -14,6 +14,10 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Entities.Game1
         public int Olhos { get; set; }
         public int Boca { get; set; }
         public string Humor { get; set; }
-        public double HumorId { get; set; }
+        public double? HumorId { get; set; }
+        public int Triste { get; set; }
+        public int Neutro { get; set; }
+        public int Feliz { get; set; }
+        public int Raiva { get; set; }
     }
 }

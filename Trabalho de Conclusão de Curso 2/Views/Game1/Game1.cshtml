@@ -255,7 +255,7 @@
     // FunctionTrainingObjModel modelo = new FunctionTrainingObjModel {pesos=pesos,deltaEscondida=deltaEscondida,deltaSaida=deltaSaida,derivadasNeuronios=derivadasNeuronios,derivadasSaida=derivadasSaida,entrVsDeltaAzul=entrVsDeltaAzul,entrVsDeltaEscondidaAzulBoca=entrVsDeltaEscondidaAzulBoca,entrVsDeltaEscondidaAzulOlhos=entrVsDeltaEscondidaAzulOlhos,entrVsDeltaEscondidaAzulSobrancelha=entrVsDeltaEscondidaAzulSobrancelha,entrVsDeltaEscondidaVerdeBoca=entrVsDeltaEscondidaVerdeBoca,entrVsDeltaEscondidaVerdeOlhos=entrVsDeltaEscondidaVerdeOlhos,entrVsDeltaEscondidaVerdeSobrancelha=entrVsDeltaEscondidaVerdeSobrancelha,entrVsDeltaEscondidaVermelhoBoca=entrVsDeltaEscondidaVermelhoBoca,entrVsDeltaEscondidaVermelhoOlhos=entrVsDeltaEscondidaVermelhoOlhos,entrVsDeltaEscondidaVermelhoSobrancelha=entrVsDeltaEscondidaVermelhoSobrancelha,entrVsDeltaVerde=entrVsDeltaVerde,entrVsDeltaVermelho=entrVsDeltaVermelho,erroMedioClasse=erroMedioClasse,erromedioSoma=erromedioSoma,Momento=Momento,somaAtivacoes=somaAtivacoes,somaAtivacoesSaida=somaAtivacoesSaida,txAprendizagem=txAprendizagem };
     for (int i = 0; i < 1; i++)
     {
-        modelo = Epoca(modelo.pesos);
+        //modelo = Epoca(modelo.pesos);
     }
 
     <h2>Erro medio: @modelo.erroMedio </h2>
@@ -364,7 +364,10 @@
                 PesoModel peso24Preto = pesos[18];
                 PesoModel peso34Preto = pesos[19];
 
-                double erromedioSoma = 0;
+                double erromedioSoma1 = 0;
+                double erromedioSoma2 = 0;
+                double erromedioSoma3 = 0;
+                double erromedioSoma4 = 0;
                 double erroMedio = 0;
 
                 double entrVsDeltaAzul = 0;
@@ -418,14 +421,14 @@
                     modelSigmoide.somasEAtivacoes.Add(result);
 
                     double softmaxVermelho = Math.Pow(euller, somaVermelho) / ((Math.Pow(euller, somaAzul) + Math.Pow(euller, somaVermelho) + Math.Pow(euller, somaVerde)));
-                    double sigmoideVermelho = 1 / (1 + Math.Pow(euller, -somaAzul));
+                    double sigmoideVermelho = 1 / (1 + Math.Pow(euller, -somaVermelho));
                     result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = softmaxVermelho };
                     model.somasEAtivacoes.Add(result);
                     result = new Result { soma = somaAzul, cor = "Vermelho", ativacao = sigmoideVermelho };
                     modelSigmoide.somasEAtivacoes.Add(result);
 
                     double softmaxVerde = Math.Pow(euller, somaVerde) / ((Math.Pow(euller, somaAzul) + Math.Pow(euller, somaVermelho) + Math.Pow(euller, somaVerde)));
-                    double sigmoideVerde = 1 / (1 + Math.Pow(euller, -somaAzul));
+                    double sigmoideVerde = 1 / (1 + Math.Pow(euller, -somaVerde));
                     result = new Result { soma = somaVerde, cor = "Verde", ativacao = softmaxVerde };
                     model.somasEAtivacoes.Add(result);
                     result = new Result { soma = somaAzul, cor = "Verde", ativacao = sigmoideVerde };
@@ -461,15 +464,15 @@
                         model.somasEAtivacoes.Add(result);
 
                         softmaxPreto = Math.Pow(euller, somaPreto2) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
-                        result = new Result { soma = somaPreto2, cor = "Preto", ativacao = softmaxPreto, IdSaida = 1 };
+                        result = new Result { soma = somaPreto2, cor = "Preto", ativacao = softmaxPreto, IdSaida = 2 };
                         model.somasEAtivacoes.Add(result);
 
                         softmaxPreto = Math.Pow(euller, somaPreto3) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
-                        result = new Result { soma = somaPreto3, cor = "Preto", ativacao = softmaxPreto, IdSaida = 1 };
+                        result = new Result { soma = somaPreto3, cor = "Preto", ativacao = softmaxPreto, IdSaida = 3 };
                         model.somasEAtivacoes.Add(result);
 
                         softmaxPreto = Math.Pow(euller, somaPreto4) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
-                        result = new Result { soma = somaPreto4, cor = "Preto", ativacao = softmaxPreto, IdSaida = 1 };
+                        result = new Result { soma = somaPreto4, cor = "Preto", ativacao = softmaxPreto, IdSaida = 4 };
                         model.somasEAtivacoes.Add(result);
 
                     }
@@ -486,7 +489,25 @@
                             ErroMedioModel erro = new ErroMedioModel();
                             erro.Id = i;
                             erro.IdSaida = j;
-                            double err = Model.training[i].HumorId - sa.ativacao;
+                            double err = 0;
+                            switch(j){
+                                case 1:
+                                err = Model.training[i].Triste - sa.ativacao;
+                                erromedioSoma1 += Math.Abs(err);
+                                break;
+                                case 2:
+                                err = Model.training[i].Neutro - sa.ativacao;
+                                erromedioSoma2 += Math.Abs(err);
+                                break;
+                                case 3:
+                                err = Model.training[i].Feliz - sa.ativacao;
+                                erromedioSoma3 += Math.Abs(err);
+                                break;
+                                case 4:
+                                err = Model.training[i].Raiva - sa.ativacao;
+                                erromedioSoma4 += Math.Abs(err);
+                                break;
+                            }
                             erro.erro = err;
                             double derivadaFuncao = sa.ativacao * (1 - sa.ativacao);
                             double deltaFuncao = err * derivadaFuncao;
@@ -494,7 +515,6 @@
                             derivadasSaida.Add(derivada);
                             DeltaModel delta = new DeltaModel { Index = i, Delta = deltaFuncao, Cor = "Preto", IdSaida = j };
                             deltaSaida.Add(delta);
-                            erromedioSoma += Math.Abs(err);
                             erroMedioClasse.Add(erro);
                         }
 
@@ -523,6 +543,7 @@
 
                     }
                 }
+
                 @for (int i = 0; i < somaAtivacoes.Count; i++)
                 {
                     for (int k = 1; k <= 4; k++)
