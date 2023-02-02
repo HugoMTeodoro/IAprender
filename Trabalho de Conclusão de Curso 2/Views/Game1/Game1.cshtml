@@ -263,52 +263,91 @@
         <br>
     }
 
-
+    pesos = modelo.pesos;
     @for (int i = 0; i < Model.training.Count; i++)
     {
         SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
+        SomaAtivacaoModel modelSigmoide = new SomaAtivacaoModel { IndexList = i };
         IArleyTraining t = Model.training[i];
-        double somaAzul = (t.Sobrancelha * modelo.pesos[0].Peso) + (t.Olhos * modelo.pesos[1].Peso) + (t.Boca * modelo.pesos[2].Peso);
-        double softmaxAzul = 1 / (1 + (Math.Pow(euller, -somaAzul)));
+
+        double somaAzul = (t.Sobrancelha * peso1Azul.Peso) + (t.Olhos * peso2Azul.Peso) + (t.Boca * peso3Azul.Peso);
+        double somaVermelho = (t.Sobrancelha * peso1Vermelho.Peso) + (t.Olhos * peso2Vermelho.Peso) + (t.Boca * peso3Vermelho.Peso);
+        double somaVerde = (t.Sobrancelha * peso1Verde.Peso) + (t.Olhos * peso2Verde.Peso) + (t.Boca * peso3Verde.Peso);
+
+
+        double softmaxAzul = Math.Pow(euller, somaAzul) / ((Math.Pow(euller, somaAzul) + Math.Pow(euller, somaVermelho) + Math.Pow(euller, somaVerde)));
+        double sigmoideAzul = 1 / (1 + Math.Pow(euller, -somaAzul));
         Result result = new Result { soma = somaAzul, cor = "Azul", ativacao = softmaxAzul };
         model.somasEAtivacoes.Add(result);
+        result = new Result { soma = somaAzul, cor = "Azul", ativacao = sigmoideAzul };
+        modelSigmoide.somasEAtivacoes.Add(result);
 
-
-        double somaVermelho = (t.Sobrancelha * modelo.pesos[3].Peso) + (t.Olhos * modelo.pesos[4].Peso) + (t.Boca * modelo.pesos[5].Peso);
-        double softmaxVermelho = 1 / (1 + (Math.Pow(euller, -somaVermelho)));
+        double softmaxVermelho = Math.Pow(euller, somaVermelho) / ((Math.Pow(euller, somaAzul) + Math.Pow(euller, somaVermelho) + Math.Pow(euller, somaVerde)));
+        double sigmoideVermelho = 1 / (1 + Math.Pow(euller, -somaVermelho));
         result = new Result { soma = somaVermelho, cor = "Vermelho", ativacao = softmaxVermelho };
         model.somasEAtivacoes.Add(result);
+        result = new Result { soma = somaAzul, cor = "Vermelho", ativacao = sigmoideVermelho };
+        modelSigmoide.somasEAtivacoes.Add(result);
 
-
-
-        double somaVerde = (t.Sobrancelha * modelo.pesos[6].Peso) + (t.Olhos * modelo.pesos[7].Peso) + (t.Boca * modelo.pesos[8].Peso);
-        double softmaxVerde = 1 / (1 + (Math.Pow(euller, -somaVerde)));
+        double softmaxVerde = Math.Pow(euller, somaVerde) / ((Math.Pow(euller, somaAzul) + Math.Pow(euller, somaVermelho) + Math.Pow(euller, somaVerde)));
+        double sigmoideVerde = 1 / (1 + Math.Pow(euller, -somaVerde));
         result = new Result { soma = somaVerde, cor = "Verde", ativacao = softmaxVerde };
         model.somasEAtivacoes.Add(result);
+        result = new Result { soma = somaAzul, cor = "Verde", ativacao = sigmoideVerde };
+        modelSigmoide.somasEAtivacoes.Add(result);
+
+
+
         somaAtivacoes.Add(model);
+        somaAtivacoesSigmoide.Add(modelSigmoide);
 
     }
 
-
     @for (int i = 0; i < Model.training.Count; i++)
     {
         SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
-        List<SomaAtivacaoModel> t = somaAtivacoes.Where(x => x.IndexList == i).ToList();
-        double somaPreto = 0;
+
+        List<SomaAtivacaoModel> t = somaAtivacoesSigmoide.Where(x => x.IndexList == i).ToList();
+        double somaPreto1 = 0;
+        double somaPreto2 = 0;
+        double somaPreto3 = 0;
+        double somaPreto4 = 0;
+
         foreach (SomaAtivacaoModel sam in t)
         {
 
-            somaPreto = (sam.somasEAtivacoes[0].ativacao * peso11Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso21Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso31Preto.Peso);
-            double softmaxPreto = 1 / (1 + (Math.Pow(euller, -somaPreto)));
-            Result result = new Result { soma = somaPreto, cor = "Preto", ativacao = softmaxPreto };
+            somaPreto1 = (sam.somasEAtivacoes[0].ativacao * peso11Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso21Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso31Preto.Peso);
+            somaPreto2 = (sam.somasEAtivacoes[0].ativacao * peso12Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso22Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso32Preto.Peso);
+            somaPreto3 = (sam.somasEAtivacoes[0].ativacao * peso13Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso23Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso33Preto.Peso);
+            somaPreto4 = (sam.somasEAtivacoes[0].ativacao * peso14Preto.Peso) + (sam.somasEAtivacoes[1].ativacao * peso24Preto.Peso) + (sam.somasEAtivacoes[2].ativacao * peso34Preto.Peso);
+
+            double softmaxPreto = Math.Pow(euller, somaPreto1) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
+            Result result = new Result { soma = somaPreto1, cor = "Preto", ativacao = softmaxPreto, IdSaida = 1 };
             model.somasEAtivacoes.Add(result);
+
+            softmaxPreto = Math.Pow(euller, somaPreto2) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
+            result = new Result { soma = somaPreto2, cor = "Preto", ativacao = softmaxPreto, IdSaida = 2 };
+            model.somasEAtivacoes.Add(result);
+
+            softmaxPreto = Math.Pow(euller, somaPreto3) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
+            result = new Result { soma = somaPreto3, cor = "Preto", ativacao = softmaxPreto, IdSaida = 3 };
+            model.somasEAtivacoes.Add(result);
+
+            softmaxPreto = Math.Pow(euller, somaPreto4) / (Math.Pow(euller, somaPreto1) + Math.Pow(euller, somaPreto2) + Math.Pow(euller, somaPreto3) + Math.Pow(euller, somaPreto4));
+            result = new Result { soma = somaPreto4, cor = "Preto", ativacao = softmaxPreto, IdSaida = 4 };
+            model.somasEAtivacoes.Add(result);
+
         }
         somaAtivacoesSaida.Add(model);
     }
 
-
+    foreach (PesoModel peso in pesos)
+    {
+        <h2>Peso @peso.Cor @peso.Index @peso.IndexSaida: @peso.Peso</h2>
+    }
 
 }
+
 <div class="table treinamento">
     <table border="1">
         <h2>Somas e ativacoes</h2>
@@ -339,7 +378,10 @@
 
 
         }
-        <h2>Resultados apos primeira epoca : Peso 1 Azul : @modelo.pesos[0].Peso <br> @modelo.pesos[1].Peso <br> @modelo.pesos[2].Peso <br> @modelo.pesos[3].Peso <br> @modelo.pesos[4].Peso <br> @modelo.pesos[5].Peso <br> @modelo.pesos[6].Peso <br> @modelo.pesos[7].Peso <br> @modelo.pesos[8].Peso <br> @modelo.pesos[9].Peso <br>@modelo.pesos[10].Peso <br>@modelo.pesos[11].Peso <br> </h2>
+        @foreach (PesoModel peso in pesos)
+       {
+           
+       }
         @functions {
             public FunctionTrainingObjModel Epoca(List<PesoModel> pesos)
             {
