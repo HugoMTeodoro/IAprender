@@ -253,7 +253,7 @@
 @{
     FunctionTrainingObjModel modelo = new FunctionTrainingObjModel { pesos = pesos, erroMedio = new List<double>() };
     // FunctionTrainingObjModel modelo = new FunctionTrainingObjModel {pesos=pesos,deltaEscondida=deltaEscondida,deltaSaida=deltaSaida,derivadasNeuronios=derivadasNeuronios,derivadasSaida=derivadasSaida,entrVsDeltaAzul=entrVsDeltaAzul,entrVsDeltaEscondidaAzulBoca=entrVsDeltaEscondidaAzulBoca,entrVsDeltaEscondidaAzulOlhos=entrVsDeltaEscondidaAzulOlhos,entrVsDeltaEscondidaAzulSobrancelha=entrVsDeltaEscondidaAzulSobrancelha,entrVsDeltaEscondidaVerdeBoca=entrVsDeltaEscondidaVerdeBoca,entrVsDeltaEscondidaVerdeOlhos=entrVsDeltaEscondidaVerdeOlhos,entrVsDeltaEscondidaVerdeSobrancelha=entrVsDeltaEscondidaVerdeSobrancelha,entrVsDeltaEscondidaVermelhoBoca=entrVsDeltaEscondidaVermelhoBoca,entrVsDeltaEscondidaVermelhoOlhos=entrVsDeltaEscondidaVermelhoOlhos,entrVsDeltaEscondidaVermelhoSobrancelha=entrVsDeltaEscondidaVermelhoSobrancelha,entrVsDeltaVerde=entrVsDeltaVerde,entrVsDeltaVermelho=entrVsDeltaVermelho,erroMedioClasse=erroMedioClasse,erromedioSoma=erromedioSoma,Momento=Momento,somaAtivacoes=somaAtivacoes,somaAtivacoesSaida=somaAtivacoesSaida,txAprendizagem=txAprendizagem };
-    for (int i = 0; i < 10000; i++)
+    for (int i = 0; i < 100; i++)
     {
         modelo = Epoca(modelo.pesos);
     }
@@ -264,6 +264,33 @@
     }
 
     pesos = modelo.pesos;
+
+    peso1Azul = pesos[0];
+    peso2Azul = pesos[1];
+    peso3Azul = pesos[2];
+    peso1Vermelho = pesos[3];
+    peso2Vermelho = pesos[4];
+    peso3Vermelho = pesos[5];
+    peso1Verde = pesos[6];
+    peso2Verde = pesos[7];
+    peso3Verde = pesos[8];
+
+    peso11Preto = pesos[9];
+    peso21Preto = pesos[10];
+    peso31Preto = pesos[11];
+
+    peso12Preto = pesos[12];
+    peso22Preto = pesos[13];
+    peso32Preto = pesos[14];
+
+    peso13Preto = pesos[15];
+    peso23Preto = pesos[16];
+    peso33Preto = pesos[17];
+
+    peso14Preto = pesos[18];
+    peso24Preto = pesos[19];
+    peso34Preto = pesos[20];
+    
     @for (int i = 0; i < Model.training.Count; i++)
     {
         SomaAtivacaoModel model = new SomaAtivacaoModel { IndexList = i };
@@ -372,19 +399,19 @@
                     @switch (sa.IdSaida)
                     {
                         case 1:
-                        <td>@Model.training[t.IndexList].Triste</td>
-                        break;
+                            <td>@Model.training[t.IndexList].Triste</td>
+                            break;
                         case 2:
-                        <td>@Model.training[t.IndexList].Neutro</td>
-                        break;
+                            <td>@Model.training[t.IndexList].Neutro</td>
+                            break;
                         case 3:
-                        <td>@Model.training[t.IndexList].Feliz</td>
-                        break;
+                            <td>@Model.training[t.IndexList].Feliz</td>
+                            break;
                         case 4:
-                        <td>@Model.training[t.IndexList].Raiva</td>
-                        break;
+                            <td>@Model.training[t.IndexList].Raiva</td>
+                            break;
                     }
-                    
+
                 </tr>
 
 
@@ -394,9 +421,9 @@
 
         }
         @foreach (PesoModel peso in pesos)
-       {
-           
-       }
+        {
+
+        }
         @functions {
             public FunctionTrainingObjModel Epoca(List<PesoModel> pesos)
             {
@@ -446,8 +473,8 @@
                 double entrVsDeltaEscondidaVerdeBoca = 0;
 
 
-                double txAprendizagem = 0.01;
-                double Momento = 1;
+                double txAprendizagem = 0.3;
+                double Momento = 0.1;
                 double euller = 2.71828;
 
 
