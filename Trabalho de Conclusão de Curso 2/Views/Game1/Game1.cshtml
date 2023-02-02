@@ -259,7 +259,7 @@
     }
     @foreach (double err in modelo.erroMedio)
     {
-        <h2>err </h2>
+        <h2>@err </h2>
         <br>
     }
 
@@ -369,7 +369,22 @@
                     <td>@sa.ativacao</td>
                     <td>@sa.soma</td>
                     <td>@sa.cor</td>
-                    <td>@Model.training[t.IndexList].HumorId</td>
+                    @switch (sa.IdSaida)
+                    {
+                        case 1:
+                        <td>@Model.training[t.IndexList].Triste</td>
+                        break;
+                        case 2:
+                        <td>@Model.training[t.IndexList].Neutro</td>
+                        break;
+                        case 3:
+                        <td>@Model.training[t.IndexList].Feliz</td>
+                        break;
+                        case 4:
+                        <td>@Model.training[t.IndexList].Raiva</td>
+                        break;
+                    }
+                    
                 </tr>
 
 
