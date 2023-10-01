@@ -12,11 +12,15 @@
 
   <ItemGroup>
     <Content Remove="Views\Game1\Index.cshtml" />
+    <Content Remove="wwwroot\css\Game2\Game2.css" />
+    <Content Remove="wwwroot\js\Game2\Game2.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\Content\Game1\IArley\IArley.png" />
     <None Include="wwwroot\css\Game1\Game1.css" />
+    <None Include="wwwroot\css\Game2\Game2.css" />
+    <None Include="wwwroot\js\Game2\Game2.js" />
     <None Include="wwwroot\js\Game1\Game1.js" />
   </ItemGroup>
 

@@ -1,0 +1,90 @@
+﻿@model Trabalho_de_Conclusão_de_Curso_2.Models.Game2Model
+@using Trabalho_de_Conclusão_de_Curso_2.Entities.Game1
+@using Newtonsoft.Json
+
+@{
+    ViewData["Title"] = "Privacy Policy";
+    string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
+    string olhos = JsonConvert.SerializeObject(Model.olhos);
+    string bocas = JsonConvert.SerializeObject(Model.bocas);
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0," />
+
+    <link rel="stylesheet" href="~/css/Game2/Game2.css" />
+
+    <title>Game 1</title>
+</head>
+
+<body>
+
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="~/js/Game2/Game2.js"></script>
+    <div class="flex-box container-box ">
+        <div class="content-box">
+            <div class="boneco" style="margin-left: -105px;">
+                <div class="game-board" id="game-board">
+
+                    <img src="~/Content/Game1/IArley/IArley.png" class="IArley" alt="Alternate Text" />
+
+                    <div id="divSobrancelha">
+                        <img src="~/Content/Game1/IArley/sobrancelha neutra.png" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />
+                    </div>
+
+                    <div id="divOlhos">
+                        <img src="~/Content/Game1/IArley/olhos neutro.png" class="Olhos" id="Olhos" alt="Alternate Text" />
+                    </div>
+
+                    <div style="z-index: 1;">
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarSobrancelha(@sobrancelhas)" style="position: absolute; top: 170px; left: 550px;" title="Mudar Sobrancelha" />
+                    </div>
+
+                    <div style="z-index: 1;">
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarOlhos(@olhos)" style="position: absolute; top: 238px; left: 550px;" title="Mudar Olhos" />
+                    </div>
+
+                    <div style="z-index: 1;">
+                        <input type="image" src="~/Content/Game1/IArley/proximo-botao.png" border="0" onclick="mudarBoca(@bocas)" style="position: absolute; top: 385px; left: 550px;" title="Mudar Boca" />
+                    </div>
+                    <div id="divBoca">
+                        <img src="~/Content/Game1/IArley/boca neutra.png" class="Boca" id="Boca" alt="Alternate Text" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="future">
+                <div class="imagem">
+                    <div class="camada1Rede" style="z-index: 1;">
+                        <span style="margin-left: 260px;margin-bottom:500px">000</span>
+                    </div>
+                    <div class="camada2Rede" style="z-index: 1;">
+                        <span style="margin-left: 125px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 260px;margin-bottom:500px">000</span>
+                    </div>
+                    <div class="camada3Pesos" style="z-index: 1;">
+                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 70px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 180px; margin-bottom:500px">000</span>
+
+                    </div>
+                    <div class="camada3Pesos" style="z-index: 1;">
+                        <span style="margin-left: 350px;margin-bottom:500px">000</span>
+                    </div>
+                    <div class="camada3Rede" style="z-index: 1;">
+                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 190px;margin-bottom:500px">000</span>
+                        <span style="margin-left: 190px; margin-bottom:500px">000</span>
+
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+

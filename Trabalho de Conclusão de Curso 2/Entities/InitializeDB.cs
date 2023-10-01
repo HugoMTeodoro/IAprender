@@ -11,7 +11,7 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
     {
         public static void Initialize(DbSQLServerContext context)
         {
-            context.Database.EnsureCreated();
+            /*context.Database.EnsureCreated();
             if (context.Images.Any())
             {
                 return;
@@ -28,9 +28,9 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Models
                 foreach (Image i in imagens)
                 {
                     context.Images.Add(i);
-                }
-                context.SaveChanges();
-            }
+                }*/
+                //context.SaveChanges();
+            //}
         }
     }
 }
