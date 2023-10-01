@@ -14,6 +14,22 @@
     align-items: center;
     justify-content: center;
 }
+.future {
+    position: relative;
+}
+
+#botaoTreinar {
+    position: absolute;
+    top: 80px; /* Ajuste a posição vertical conforme necessário */
+    left: 600px; /* Ajuste a posição horizontal conforme necessário */
+    z-index: 2;
+}
+#botaoCalcularEmocao {
+    position: absolute;
+    top: 130px; /* Ajuste a posição vertical conforme necessário */
+    left: 600px; /* Ajuste a posição horizontal conforme necessário */
+    z-index: 2;
+}
 
 .IArley {
     position: absolute;
@@ -103,6 +119,13 @@
     color: black;
     text-align: center;
 }
+.camada2Pesos {
+    left: 107px !important;
+    top: 150px !important;
+    position: absolute !important;
+    color: black !important;
+    text-align: center !important;
+}
 .peso1Azul {
     left: 300px;
     top: 135px;
@@ -113,97 +136,6 @@
 .peso2Azul {
     left: 250px;
     top: 245px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso3Azul {
-    left: 180px;
-    top: 300px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso1Vermelho {
-    left: 470px;
-    top: 135px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso2Vermelho {
-    left: 250px;
-    top: 500px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso3Vermelho {
-    left: 150px;
-    top: 590px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso1Verde {
-    left: 600px;
-    top: 135px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso2Verde {
-    left: 580px;
-    top: 580px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso3Verde {
-    left: 400px;
-    top: 880px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso1Preto {
-    left: 800px;
-    top: 135px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso2Preto {
-    left: 800px;
-    top: 480px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.peso3Preto {
-    left: 800px;
-    top: 730px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.somaAtivacaoN1 {
-    left: 560px;
-    top: 40px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.somaAtivacaoN2 {
-    left: 560px;
-    top: 480px;
-    position: absolute;
-    color: black;
-    text-align: center;
-}
-.somaAtivacaoN3 {
-    left: 560px;
-    top: 900px;
     position: absolute;
     color: black;
     text-align: center;

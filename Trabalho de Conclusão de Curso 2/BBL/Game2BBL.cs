@@ -19,10 +19,10 @@ namespace Trabalho_de_Conclusão_de_Curso_2.BBL
         public Game2Model getModel(string referencePlace)
         {
             Game2Model model = new Game2Model();
-            model.sobrancelhas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="sobrancelha").ToList();
-            model.olhos = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="olhos").ToList();
-            model.bocas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="boca").ToList();
-            model.training = _context.Trainings.ToList();
+            model.sobrancelhas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="sobrancelha" && x.Desativado == null).ToList();
+            model.olhos = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="olhos" && x.Desativado == null).ToList();
+            model.bocas = _context.Images.Where(x=> x.ReferencePlace==referencePlace && x.BodyPart=="boca" && x.Desativado==null).ToList();
+            model.training = _context.Trainings.Where(x=> x.Desativado ==null).ToList();
             return model;
         }
 

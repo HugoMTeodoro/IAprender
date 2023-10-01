@@ -15,6 +15,7 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Entities.Game1
         public string Humor { get; set; }
         public int Hierarchy { get; set; }
         public string ReferencePlace { get; set; }
+        public bool? Desativado { get; set; }
 
 
     }

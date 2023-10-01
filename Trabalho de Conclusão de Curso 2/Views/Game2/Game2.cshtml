@@ -7,6 +7,7 @@
     string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
+    int emocaoInicial = 3;
 }
 
 <head>
@@ -53,33 +54,41 @@
                     </div>
                 </div>
             </div>
-
+            <button id="botaoTreinar" onclick="calculaPesosTreinando()">Treinar</button>
+            <button id="botaoCalcularEmocao" onclick="calculaEmocao()">Calcular Emoção</button>
             <div class="future">
                 <div class="imagem">
                     <div class="camada1Rede" style="z-index: 1;">
-                        <span style="margin-left: 260px;margin-bottom:500px">000</span>
+                        <span id="resultadoFinal"style="margin-left: 260px;margin-bottom:500px">000</span>
                     </div>
                     <div class="camada2Rede" style="z-index: 1;">
-                        <span style="margin-left: 125px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 260px;margin-bottom:500px">000</span>
+                        <span id="ativacao1" style="margin-left: 115px;margin-bottom:500px">00000</span>
+                        <span id="ativacao2" style="margin-left: 250px;margin-bottom:500px">00000</span>
                     </div>
                     <div class="camada3Pesos" style="z-index: 1;">
-                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 70px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 180px; margin-bottom:500px">000</span>
+                        <span id="peso1Azul" style="margin-left: 60px;margin-bottom:500px;color: blue;">000</span>
+                        <span id="peso1Vermelho" style="margin-left: 70px;margin-bottom:500px;color: red;">000</span>
+                        <span id="peso2Azul" style="margin-left: 53px;margin-bottom:500px;color: blue;">000</span>
+                        <span id="peso3Vermelho" style="margin-left: 175px; margin-bottom:500px;color: red;">000</span>
 
                     </div>
                     <div class="camada3Pesos" style="z-index: 1;">
-                        <span style="margin-left: 350px;margin-bottom:500px">000</span>
+                        <span id="peso3Azul" style="margin-left: 350px;margin-bottom:500px;color: blue;">000</span>
                     </div>
+                    <div class="camada3Pesos" style="z-index: 1;">
+                        <span id="peso2Vermelho" style="margin-left: 283px;margin-bottom:500px;color: red;">000</span>
+                    </div>
+                    
                     <div class="camada3Rede" style="z-index: 1;">
-                        <span style="margin-left: 60px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 190px;margin-bottom:500px">000</span>
-                        <span style="margin-left: 190px; margin-bottom:500px">000</span>
+                        <span id="entradaSobrancelha" style="margin-left: 70px;margin-bottom:500px">@emocaoInicial</span>
+                        <span id="entradaOlhos" style="margin-left: 205px;margin-bottom:500px">@emocaoInicial</span>
+                        <span id="entradaBoca" style="margin-left: 205px; margin-bottom:500px">@emocaoInicial</span>
 
                     </div>
-
+                    <div class="camada2Pesos" style="z-index: 1;">
+                        <span id="peso1Verde" style="margin-left: 180px;color: green;">000</span>
+                        <span id="peso2Verde" style="margin-left: 150px;color: green;">000</span>
+                    </div>
                     
                 </div>
 

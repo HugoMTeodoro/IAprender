@@ -19,5 +19,6 @@ namespace Trabalho_de_Conclusão_de_Curso_2.Entities.Game1
         public int Neutro { get; set; }
         public int Feliz { get; set; }
         public int Raiva { get; set; }
+        public bool? Desativado { get; set; }
     }
 }
