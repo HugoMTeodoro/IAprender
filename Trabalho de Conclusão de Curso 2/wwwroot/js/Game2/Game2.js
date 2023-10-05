@@ -7,7 +7,6 @@ var v0 = [6, 3, 5]; // pesos da camada 1 para 2 vermelho
 var v1 = [2, 1, 3]; // pesos da camada 1 para 2 azul
 var k = 0.1;
 $(document).ready(function () {
-    //Main();
 });
 
 
@@ -84,7 +83,7 @@ function Treina(targ, train, x, h, w, v0, v1, k) {
         h[i] = 0;
     }
 
-    
+
 }
 
 function Aplica(x, h, w, v0, v1, k) {
@@ -110,7 +109,7 @@ function Aplica(x, h, w, v0, v1, k) {
         h[i] = 0;
     }
 
-    
+
 
     document.getElementById(`resultadoFinal`).innerText = (y * k).toFixed(2);
 
@@ -153,14 +152,43 @@ function Main() {
     console.log(Aplica(trainx, h, w, v0, v1, k));
 }
 function calculaEmocao() {
-    const targx = [3, 3, 3];
+    const targx = [document.getElementById('entradaSobrancelha').innerText, document.getElementById('entradaOlhos').innerText, document.getElementById('entradaBoca').innerText];
     Aplica(targx, h, w, v0, v1, k);
 }
-function calculaPesosTreinando() {
-    const trainx = [7, 3, 3];
-    const targx = [3, 3, 3]; // neutro
-    const targ = Aplica(targx, h, w, v0, v1, k);
-    const train = Aplica(trainx, h, w, v0, v1, k);
-    Treina(targ, train, trainx, h, w, v0, v1, k);
-    PrintRNA(w, v0, v1);
+function calculaPesosTreinando(treinos) {
+    let listTreinos = JSON.parse(JSON.stringify(treinos));
+    let index = 0;
+
+    function processarTreino() {
+        if (index < listTreinos.length && index < 10) {
+            const element = listTreinos[index];
+            const targx = traduzEmocaoParaVetor(element.Humor);
+            const trainx = [element.Sobrancelha, element.Olhos, element.Boca];
+            const targ = Aplica(targx, h, w, v0, v1, k);
+            const train = Aplica(trainx, h, w, v0, v1, k);
+            Treina(targ, train, trainx, h, w, v0, v1, k);
+            PrintRNA(w, v0, v1);
+
+            index++;
+            // Chamada recursiva para processar o próximo treino com um atraso de 1000 ms (1 segundo)
+            setTimeout(processarTreino, 1000);
+        }
+    }
+
+    processarTreino(); // Iniciar o processamento do primeiro treino
+}
+
+function traduzEmocaoParaVetor(emocao) {
+    if (emocao == "Triste") {
+        return [0, 0, 0];
+    }
+    if (emocao == "Neutro") {
+        return [3, 3, 3];
+    }
+    if (emocao == "Feliz") {
+        return [7, 7, 7];
+    }
+}
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

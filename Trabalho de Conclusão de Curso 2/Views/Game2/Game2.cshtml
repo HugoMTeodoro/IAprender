@@ -7,6 +7,7 @@
     string sobrancelhas = JsonConvert.SerializeObject(Model.sobrancelhas);
     string olhos = JsonConvert.SerializeObject(Model.olhos);
     string bocas = JsonConvert.SerializeObject(Model.bocas);
+    string treinos = JsonConvert.SerializeObject(Model.training);
     int emocaoInicial = 3;
 }
 
@@ -54,7 +55,7 @@
                     </div>
                 </div>
             </div>
-            <button id="botaoTreinar" onclick="calculaPesosTreinando()">Treinar</button>
+            <button id="botaoTreinar" onclick="calculaPesosTreinando(@treinos)">Treinar</button>
             <button id="botaoCalcularEmocao" onclick="calculaEmocao()">Calcular Emoção</button>
             <div class="future">
                 <div class="imagem">
