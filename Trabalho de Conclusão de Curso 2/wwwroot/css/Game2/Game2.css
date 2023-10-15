@@ -35,20 +35,32 @@
     position: absolute;
     
 }
+#game-board img.IArley {
+    width: 600px; /* Defina a largura desejada, por exemplo, 100 pixels */
+    height: auto; /* Mantenha a proporção original da altura */
+}
+#divSobrancelha img.Sobrancelha {
+    width: 600px; /* Defina a largura desejada, por exemplo, 100 pixels */
+    height: auto; /* Mantenha a proporção original da altura */
+}
+#divBoca img.Boca {
+    width: 650px; /* Defina a largura desejada, por exemplo, 100 pixels */
+    height: auto; /* Mantenha a proporção original da altura */
+}
 .boneco {
     height: 550px;
     
 }
 .Olhos {
    
-    width: 300px; 
-    height: 100px; 
-    margin-right:40px;
+    width: 600px; 
+    height: 600px; 
+    margin-right:0px;
 
 }
 .Sobrancelha {
-    margin-bottom: 150px;
-    margin-left: -40px;
+    margin-bottom: 0px;
+    margin-left: 0px;
 }
 #divOlhos {
     position: absolute;
@@ -60,8 +72,8 @@
     position: absolute;
 }
 .Boca {
-    margin-top:300px;
-    margin-left:-40px;
+    margin-top:-30px;
+    margin-left: -5px;
 }
 
 .flex-box {

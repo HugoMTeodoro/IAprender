@@ -17,7 +17,7 @@ function mudarSobrancelha(listImages) {
     } else {
         indexSobrancelha++;
     }
-    document.getElementById('divSobrancelha').innerHTML = '<img src="/Content/Game1/IArley/' + listImg[indexSobrancelha].ImageName + '" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />';
+    document.getElementById('divSobrancelha').innerHTML = '<img src="/Content/Game2/IArley/' + listImg[indexSobrancelha].ImageName + '" class="Sobrancelha" id="Sobrancelha" alt="Alternate Text" />';
     document.getElementById('entradaSobrancelha').innerText = listImg[indexSobrancelha].Hierarchy;
 }
 
@@ -28,7 +28,7 @@ function mudarOlhos(listImages) {
     } else {
         indexOlhos++;
     }
-    document.getElementById('divOlhos').innerHTML = '<img src="/Content/Game1/IArley/' + listImg[indexOlhos].ImageName + '" class="Olhos" id="Olhos" alt="Alternate Text" />';
+    document.getElementById('divOlhos').innerHTML = '<img src="/Content/Game2/IArley/' + listImg[indexOlhos].ImageName + '" class="Olhos" id="Olhos" alt="Alternate Text" />';
     document.getElementById('entradaOlhos').innerText = listImg[indexOlhos].Hierarchy;
 }
 
@@ -39,7 +39,7 @@ function mudarBoca(listImages) {
     } else {
         indexBoca++;
     }
-    document.getElementById('divBoca').innerHTML = '<img src="/Content/Game1/IArley/' + listImg[indexBoca].ImageName + '" class="Boca" id="Boca" alt="Alternate Text" />';
+    document.getElementById('divBoca').innerHTML = '<img src="/Content/Game2/IArley/' + listImg[indexBoca].ImageName + '" class="Boca" id="Boca" alt="Alternate Text" />';
     document.getElementById('entradaBoca').innerText = listImg[indexBoca].Hierarchy;
 }
 
