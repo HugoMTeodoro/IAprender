@@ -24,7 +24,7 @@
 
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="~/js/Game2/Game2.js"></script>
-    <div class="flex-box container-box ">
+    <div class="flex-box container-box backgroundGeral">
         <div class="content-box">
             <div class="boneco" style="margin-left: -105px;">
                 <div class="game-board" id="game-board">
@@ -55,8 +55,17 @@
                     </div>
                 </div>
             </div>
-            <button id="botaoTreinar" onclick="calculaPesosTreinando(@treinos)">Treinar</button>
-            <button id="botaoCalcularEmocao" onclick="calculaEmocao()">Calcular Emoção</button>
+            <div>
+                <div class="buttonGame" id="buttonGame" style="z-index: 2;">
+                    <a onclick="calculaPesosTreinando(@treinos)" href="#">Treinar</a>
+                </div>
+            </div>
+            <div>
+                <div class="buttonGame" id="buttonGame2" style="z-index: 2;">
+                    <a onclick="calculaEmocao()" href="#">Calcular emoção</a>
+                </div>
+            </div>
+            
             <div class="future">
                 <div class="imagem">
                     <div class="camada1Rede" style="z-index: 1;">

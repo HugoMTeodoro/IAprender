@@ -6,12 +6,19 @@
     <title>@ViewData["Title"] - Trabalho_de_Conclusão_de_Curso_2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .navbar-pink {
+            background-color: pink !important/* Substitua 'pink' pela cor que desejar */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 navbar-pink" style="z-index:100">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Trabalho_de_Conclusão_de_Curso_2</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="font-family:Child Dream;margin-bottom:-5px">
+                    <img src="~/Content/Backgrounds/icone robo.png" alt="Ícone" style="width: 50px; height: 30px; margin-right: 0px;margin-top:-7px;">
+                    IAPRENDER</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,7 +42,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted navbar-pink">
         <div class="container">
             &copy; 2023 - Trabalho_de_Conclusão_de_Curso_2 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

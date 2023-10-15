@@ -1,7 +1,7 @@
 ﻿* {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .game-board {
@@ -14,8 +14,10 @@
     align-items: center;
     justify-content: center;
 }
+
 .future {
     position: relative;
+    margin-left: -300px;
 }
 
 #botaoTreinar {
@@ -24,6 +26,7 @@
     left: 600px; /* Ajuste a posição horizontal conforme necessário */
     z-index: 2;
 }
+
 #botaoCalcularEmocao {
     position: absolute;
     top: 130px; /* Ajuste a posição vertical conforme necessário */
@@ -33,56 +36,62 @@
 
 .IArley {
     position: absolute;
-    
 }
+
 #game-board img.IArley {
     width: 600px; /* Defina a largura desejada, por exemplo, 100 pixels */
     height: auto; /* Mantenha a proporção original da altura */
 }
+
 #divSobrancelha img.Sobrancelha {
     width: 600px; /* Defina a largura desejada, por exemplo, 100 pixels */
     height: auto; /* Mantenha a proporção original da altura */
 }
+
 #divBoca img.Boca {
     width: 650px; /* Defina a largura desejada, por exemplo, 100 pixels */
     height: auto; /* Mantenha a proporção original da altura */
 }
+
 .boneco {
     height: 550px;
-    
 }
-.Olhos {
-   
-    width: 600px; 
-    height: 600px; 
-    margin-right:0px;
 
+.Olhos {
+    width: 600px;
+    height: 600px;
+    margin-right: 0px;
 }
+
 .Sobrancelha {
     margin-bottom: 0px;
     margin-left: 0px;
 }
+
 #divOlhos {
     position: absolute;
 }
+
 #divBoca {
     position: absolute;
 }
+
 #divBoca {
     position: absolute;
 }
+
 .Boca {
-    margin-top:-30px;
+    margin-top: -30px;
     margin-left: -5px;
 }
 
 .flex-box {
     display: flex;
 }
+
 .RedeETabela {
     display: flex;
     flex-direction: column;
-
 }
 
 .container-box {
@@ -91,7 +100,7 @@
 .content-box {
     display: flex;
     justify-content: space-between;
-    width:100%
+    width: 100%
 }
 
 .imagem {
@@ -110,6 +119,7 @@
     color: black;
     text-align: center;
 }
+
 .camada3Rede {
     left: 107px;
     top: 494px;
@@ -117,6 +127,7 @@
     color: black;
     text-align: center;
 }
+
 .camada3Pesos {
     left: 107px;
     top: 394px;
@@ -124,6 +135,7 @@
     color: black;
     text-align: center;
 }
+
 .camada1Rede {
     left: 107px;
     top: 80px;
@@ -131,6 +143,7 @@
     color: black;
     text-align: center;
 }
+
 .camada2Pesos {
     left: 107px !important;
     top: 150px !important;
@@ -138,6 +151,7 @@
     color: black !important;
     text-align: center !important;
 }
+
 .peso1Azul {
     left: 300px;
     top: 135px;
@@ -145,10 +159,131 @@
     color: black;
     text-align: center;
 }
+
 .peso2Azul {
     left: 250px;
     top: 245px;
     position: absolute;
     color: black;
     text-align: center;
+}
+
+body {
+    /* background-color: lightskyblue; /* Cor branca como fallback */
+    /*background-image: url('../../Content/Backgrounds/game2 bkgrnd2.jpeg') !important; /* Substitua com o caminho da sua imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.boneco {
+    background-image: url('../../Content/Backgrounds/game2 bkgrnd1.jpeg') !important; /* Substitua com o caminho da sua imagem */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.buttonGame {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+#buttonGame a {
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #FFA12B;
+    display: block;
+    position: relative;
+    padding: 10px 20px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-shadow: 0px 1px 0px #000;
+    filter: drop-shadow(color=#000, offx=0px, offy=1px);
+    -webkit-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+    -moz-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+    box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+    #buttonGame a:active {
+        top: 10px;
+        background-color: #F78900;
+        -webkit-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+        -moz-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+        box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+    }
+
+.buttonGame:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    position: absolute;
+    bottom: -15px;
+    left: -4px;
+    z-index: -1;
+    background-color: #2B1800;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.buttonGame2 {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    white-space: nowrap;
+}
+
+#buttonGame2 a {
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    text-decoration: none;
+    background-color: green;
+    display: block;
+    position: relative;
+    padding: 10px 40px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    text-shadow: 0px 1px 0px #000;
+    filter: drop-shadow(color=#000, offx=0px, offy=1px);
+    -webkit-box-shadow: inset 0 1px 0 darkgreen, 0 10px 0 darkgreen;
+    -moz-box-shadow: inset 0 1px 0 darkgreen, 0 10px 0 darkgreen;
+    box-shadow: inset 0 1px 0 darkgreen, 0 10px 0 darkgreen;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    min-width: 13em;
+}
+
+    #buttonGame2 a:active {
+        top: 10px;
+        background-color: forestgreen;
+        -webkit-box-shadow: inset 0 1px 0 darkgreen, inset 0 -3px 0 darkgreen;
+        -moz-box-shadow: inset 0 1px 0 darkgreen, inset 0 -3px 0 darkgreen;
+        box-shadow: inset 0 1px 0 darkgreen, inset 0 -3px 0 darkgreen;
+    }
+
+.buttonGame2:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    position: absolute;
+    bottom: -15px;
+    left: -4px;
+    z-index: -1;
+    background-color: darkgreen;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
