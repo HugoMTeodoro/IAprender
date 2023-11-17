@@ -44,7 +44,7 @@ function mudarBoca(listImages) {
 }
 
 function Treina(targ, train, x, h, w, v0, v1, k) {
-    const taxaAprendizado = 0.28;
+    const taxaAprendizado = document.getElementById('aprendizagem').value;
     const deltai = k * (targ - train);
     const deltaj = k * (w[0] + w[1]) * deltai;
 
@@ -101,7 +101,7 @@ function Aplica(x, h, w, v0, v1, k) {
         y += w[i] * h[i];
 
     h.forEach(function (element, index) {
-        document.getElementById(`ativacao${index + 1}`).innerText = element.toFixed(2);
+        document.getElementById(`ativacao${index + 1}`).innerText = element.toFixed(2).padStart(4, '0');
     });
 
     // zerando
@@ -112,19 +112,20 @@ function Aplica(x, h, w, v0, v1, k) {
 
 
     document.getElementById(`resultadoFinal`).innerText = (y * k).toFixed(2);
+    document.getElementById(`resultadoFinalTexto`).innerText = traduzResultadoNumericoParaTexto(document.getElementById(`resultadoFinal`).innerText);
 
     return y * k;
 }
 
 function PrintRNA(w, v0, v1) {
     w.forEach(function (element, index) {
-        document.getElementById(`peso${index + 1}Verde`).innerText = element.toFixed(2);
+        document.getElementById(`peso${index + 1}Verde`).innerText = element.toFixed(2).padStart(4, '0');
     });
     v0.forEach(function (element, index) {
-        document.getElementById(`peso${index + 1}Vermelho`).innerText = element.toFixed(2);
+        document.getElementById(`peso${index + 1}Vermelho`).innerText = element.toFixed(2).padStart(4, '0');
     });
     v1.forEach(function (element, index) {
-        document.getElementById(`peso${index + 1}Azul`).innerText = element.toFixed(2);
+        document.getElementById(`peso${index + 1}Azul`).innerText = element.toFixed(2).padStart(4, '0');
     });
 }
 
@@ -160,7 +161,9 @@ function calculaPesosTreinando(treinos) {
     let index = 0;
 
     function processarTreino() {
-        if (index < listTreinos.length && index < 10) {
+
+
+        if (index < listTreinos.length && index < parseInt(document.getElementById('features').value)) {
             const element = listTreinos[index];
             const targx = traduzEmocaoParaVetor(element.Humor);
             const trainx = [element.Sobrancelha, element.Olhos, element.Boca];
@@ -175,7 +178,9 @@ function calculaPesosTreinando(treinos) {
         }
     }
 
-    processarTreino(); // Iniciar o processamento do primeiro treino
+    for (var i = 0; i < parseInt(document.getElementById('epocas').value); i++) {
+        processarTreino(); // Iniciar o processamento do primeiro treino
+    }
 }
 
 function traduzEmocaoParaVetor(emocao) {
@@ -191,4 +196,16 @@ function traduzEmocaoParaVetor(emocao) {
 }
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function traduzResultadoNumericoParaTexto(resultado) {
+    if (resultado > 5.1 && resultado < 8.5) {
+        return "Neutro";
+    } else {
+        if (resultado > 8.5) {
+            return "Feliz";
+        } else {
+            return "Triste";
+        }
+    }
 }

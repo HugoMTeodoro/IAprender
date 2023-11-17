@@ -113,17 +113,17 @@
 }
 
 .camada2Rede {
-    left: 107px;
-    top: 280px;
+    left: 95px;
+    top: 270px;
     position: absolute;
     color: black;
     text-align: center;
 }
 
 .camada3Rede {
-    left: 107px;
-    top: 494px;
-    position: absolute;
+    left: 0px !important;
+    top: 460px !important;
+    position: relative;
     color: black;
     text-align: center;
 }
@@ -137,8 +137,8 @@
 }
 
 .camada1Rede {
-    left: 107px;
-    top: 80px;
+    left: 114px;
+    top: 105px;
     position: absolute;
     color: black;
     text-align: center;
@@ -286,4 +286,8 @@ body {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+.spanEntradas {
+    font-family: 'Child Dream' !important;
+    position: absolute !important;
 }
