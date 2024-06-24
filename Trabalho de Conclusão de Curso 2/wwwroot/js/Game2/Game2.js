@@ -199,13 +199,62 @@ function delay(ms) {
 }
 
 function traduzResultadoNumericoParaTexto(resultado) {
-    if (resultado > 5.1 && resultado < 8.5) {
+    let targetx = [7, 7, 7];
+    let max = AplicaRetornoSemEscrever(targetx, h, w, v0, v1, k);
+    if (resultado > (max*0.38) && resultado < (max*0.67)) {
+    //if (resultado > 5.1 && resultado < 8.5) {
         return "Neutro";
     } else {
-        if (resultado > 8.5) {
+        if (resultado > (max * 0.67)) {
             return "Feliz";
         } else {
             return "Triste";
         }
     }
+}
+
+function AplicaRetornoSemEscrever(x, h, w, v0, v1, k) {
+    let y = 0;
+    // h0
+    for (let i = 0; i < v0.length; i++)
+        h[0] += v0[i] * x[i];
+
+    // h1
+    for (let i = 0; i < v1.length; i++)
+        h[1] += v1[i] * x[i];
+
+    // y saida
+    for (let i = 0; i < w.length; i++)
+        y += w[i] * h[i];
+
+    h.forEach(function (element, index) {
+        document.getElementById(`ativacao${index + 1}`).innerText = element.toFixed(2).padStart(4, '0');
+    });
+
+    // zerando
+    for (let i = 0; i < h.length; i++) {
+        h[i] = 0;
+    }
+
+
+
+    return y * k;
+}
+
+function mostrarModal(id) {
+    var modal = document.getElementById(id);
+    modal.style.display = "block";
+    setTimeout(function () {
+        modal.style.opacity = "1";
+    }, 50);
+}
+
+function fecharModal(id) {
+    var modal = document.getElementById(id);
+    modal.style.opacity = "0";
+
+    // Adiciona um atraso antes de esconder o modal para permitir que a transição seja visível
+    setTimeout(function () {
+        modal.style.display = "none";
+    }, 300);
 }

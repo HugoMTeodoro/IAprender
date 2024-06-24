@@ -70,27 +70,31 @@
                 <div>
                     <span id="spanFeature" class="spanEntradas" style="margin-left: -360px;margin-bottom:570px;margin-top:70px !important;font-family:'Child Dream';font-size:30px;z-index:3">FEATURES:</span>
                     <input type="number" class="form-control" id="features" placeholder="RECOMENDADO: 1" style="margin-left: -220px;margin-bottom:570px;margin-top:78px !important;font-family:'Child Dream';display:inline-block;height:27px;width:180px;" value="10">
+                    <span id="spanFeatureDica" class="spanEntradas" style="margin-left: -0px;margin-bottom:570px;margin-top:70px !important;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Feature')">?</span>
 
                 </div>
             </div>
-            
+
             <div style="z-index:3;">
                 <div>
                     <span id="spanAprendizagem" class="spanEntradas" style="margin-left: -360px;margin-bottom:570px;margin-top:100px !important;font-family:'Child Dream';font-size:30px;z-index:3">APRENDIZAGEM:</span>
                     <input type="number" class="form-control" id="aprendizagem" placeholder="RECOMENDADO: 1" style="margin-left: -150px;margin-bottom:570px;margin-top:108px !important;font-family:'Child Dream';display:inline-block;height:27px;width:110px;" value="0.28">
+                    <span id="spanAprendizagemDica" class="spanEntradas" style="margin-left: -0px;margin-bottom:570px;margin-top:100px !important;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Aprendizagem')">?</span>
 
                 </div>
             </div>
-            
+
             <div style="z-index:3;margin-left:-0px">
                 <div>
                     <span id="spanEpocas" class="spanEntradas" style="margin-left: -360px;margin-bottom:570px;margin-top:130px !important;font-family:'Child Dream';font-size:30px;z-index:3;display:inline-block;">ÉPOCAS:</span>
                     <input type="number" class="form-control" id="epocas" placeholder="RECOMENDADO: 1" style="margin-left: -250px;margin-bottom:570px;margin-top:138px !important;font-family:'Child Dream';display:inline-block;height:27px;width:210px;" value="1">
+                    <span id="spanAprendizagemDica" class="spanEntradas" style="margin-left: -0px;margin-bottom:570px;margin-top:130px !important;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Epocas')">?</span>
+
                 </div>
-               
-                    
+
+
             </div>
-            
+
             <div class="future">
                 <div class="imagem">
                     <div class="camada1Rede" style="z-index: 1;">
@@ -114,21 +118,103 @@
                     <div class="camada3Pesos" style="z-index: 1;">
                         <span id="peso2Vermelho" style="margin-left: 283px;margin-bottom:500px;color: red;font-family:'Child Dream';">000</span>
                     </div>
-                    
+
                     <div class="camada3Rede" style="z-index: 1;">
+                        <span class="spanEntradas" id="NomeSobrancelha" style="margin-left: -250px;margin-top:0px;font-family:'Child Dream';font-size:15px">Sobranc.</span>
                         <span class="spanEntradas" id="entradaSobrancelha" style="margin-left: -235px;margin-top:0px;font-family:'Child Dream';font-size:60px">@emocaoInicial</span>
+                        <span class="spanEntradas" id="NomeOlhos" style="margin-left: -20px;margin-top:0px;font-family:'Child Dream';font-size:15px">Olhos</span>
                         <span class="spanEntradas" id="entradaOlhos" style="margin-left: -20px;margin-top:0px;font-family:'Child Dream';font-size:60px">@emocaoInicial</span>
+                        <span class="spanEntradas" id="NomeBoca" style="margin-left: 200px;font-family:'Child Dream';font-size:15px">Boca</span>
                         <span class="spanEntradas" id="entradaBoca" style="margin-left: 200px;font-family:'Child Dream';font-size:60px">@emocaoInicial</span>
 
                     </div>
                     <div class="camada2Pesos" style="z-index: 1;">
-                        <span id="peso1Verde" style="margin-left: 180px;color: green;">000</span>
-                        <span id="peso2Verde" style="margin-left: 150px;color: green;">000</span>
+                        <span id="peso1Verde" style="margin-left: 180px;color: green;font-family:'Child Dream';">000</span>
+                        <span id="peso2Verde" style="margin-left: 150px;color: green;font-family:'Child Dream';">000</span>
                     </div>
-                    
+
                 </div>
 
             </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top:-200px;margin-bottom:200px">
+        <img src="~/Content/Game2/Codigos/Treina.png" id="TreinaCod" alt="Alternate Text" />
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -700px;margin-left:1150px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Treina')">?</span>
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -540px;margin-left:510px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Treina1')">?</span>
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -230px;margin-left:770px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Treina2')">?</span>
+
+    </div>
+    <div style="margin-top:-200px;margin-bottom:200px">
+        <img src="~/Content/Game2/Codigos/CalculaPesos.png" id="TreinaCod" alt="Alternate Text" />
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -20px;margin-left:-790px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Calcula')">?</span>
+
+    </div>
+    <div style="margin-top:-180px;margin-bottom:200px">
+        <img src="~/Content/Game2/Codigos/Aplica.png" id="TreinaCod" alt="Alternate Text" />
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -460px;margin-left:878px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Aplica')">?</span>
+
+    </div>
+    <div style="margin-top:-180px;margin-bottom:200px">
+        <img src="~/Content/Game2/Codigos/Traduz.png" id="TreinaCod" alt="Alternate Text" />
+        <span id="spanTreinaDica" class="spanEntradas" style="margin-top: -20px;margin-left:0px;font-family:'Child Dream';font-size:30px;z-index:3;color:blue;text-decoration: underline;cursor:pointer;" onclick="mostrarModal('Traduz')">?</span>
+
+    </div>
+    <div class="myModal" id="Feature">
+        <span class="fecharModal" onclick="fecharModal('Feature')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/Feature.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Aprendizagem">
+        <span class="fecharModal" onclick="fecharModal('Aprendizagem')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/taxa de aprendizagem.jpg.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Epocas">
+        <span class="fecharModal" onclick="fecharModal('Epocas')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/Épocas.jpg.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Treina">
+        <span class="fecharModal" onclick="fecharModal('Treina')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/CodTreina.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Calcula">
+        <span class="fecharModal" onclick="fecharModal('Calcula')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/CalculapesosCOD.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    
+    <div class="myModal" id="Aplica">
+        <span class="fecharModal" onclick="fecharModal('Aplica')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/Aplica Cod.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Traduz">
+        <span class="fecharModal" onclick="fecharModal('Traduz')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/traduzDica.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Treina1">
+        <span class="fecharModal" onclick="fecharModal('Treina1')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/Treinadica1.png" alt="Imagem do Modal">
+        </div>
+    </div>
+    <div class="myModal" id="Treina2">
+        <span class="fecharModal" onclick="fecharModal('Treina2')">X</span>
+        <div class="modalContent">
+            <img class="modalImage" src="/Content/Game2/Dicas/TreinaDica2.png" alt="Imagem do Modal">
         </div>
     </div>
 </body>
